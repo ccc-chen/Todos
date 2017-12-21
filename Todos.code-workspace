@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "StoryView"
+		},
+		{
+			"path": "ReduxServ"
+		},
+		{
+			"path": "StoryPrj"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}

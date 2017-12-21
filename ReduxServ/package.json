@@ -1,0 +1,18 @@
+{
+  "name": "ReduxServ",
+  "version": "0.0.0",
+  "main": "dist/bundle.js",
+  "devDependencies": {
+    "async-to-gen": "^1.3.3",
+    "coffee-require": "^0.0.3",
+    "ddeyes": "^0.0.4",
+    "shelljs": "^0.7.8"
+  },
+  "dependencies": {
+    "cfx.redux": "^0.0.5",
+    "cfx.redux-actions": "^0.0.1",
+    "cfx.redux-saga": "^0.0.1",
+    "cfx.redux-types": "^0.0.4",
+    "dva": "^2.0.4"
+  }
+}
