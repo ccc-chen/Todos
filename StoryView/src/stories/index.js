@@ -9,11 +9,15 @@ import Input from './input';
 
 import List from './list';
 
-import todosActive from './todosActive';
+import todosActive from './todosState/todosActive';
 
-import todosCom from './todosCom';
+import todosCom from './todosState/todosCom';
 
-import todosAll from './todosAll';
+import todosAll from './todosState/todosAll';
+
+import todosHave from './todosState/todosHave';
+
+import todosNot from './todosState/todosNot';
 
 Welcome();
 
@@ -28,3 +32,7 @@ todosActive();
 todosCom();
 
 todosAll();
+
+todosHave();
+
+todosNot();

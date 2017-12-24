@@ -11,7 +11,7 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
-import Input from '../components/input';
+import Input from '../../components/input';
 
 CFX = prefixDom({Input});
 
@@ -21,6 +21,7 @@ export default function() {
     ({c_Input} = CFX);
     return c_Input({
       filter: 'all',
+      disable: false,
       selector: function(filter) {
         return console.log(filter);
       },

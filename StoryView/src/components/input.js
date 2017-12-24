@@ -47,8 +47,7 @@ Input = class Input extends React.Component {
       return console.log('Pls use props blur');
     };
     onSelect = (opt) => {
-      selector(opt.props.value);
-      return console.log(this.state.disable);
+      return selector(opt.props.value);
     };
     onBlur = (v) => {
       return blur(v);

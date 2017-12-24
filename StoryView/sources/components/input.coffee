@@ -2,7 +2,7 @@ import { prefixDom } from 'cfx.dom'
 import React, { Component } from 'react'
 import {
   List
-  Icon  
+  Icon
   NavBar
   Popover
   InputItem
@@ -60,18 +60,17 @@ class Input extends React.Component
       if @props.blur?
       then @props.blur
       else (blur) =>
-        console.log 'Pls use props blur'     
+        console.log 'Pls use props blur'
 
     onSelect = (opt) =>
       selector opt.props.value
-      console.log @state.disable
 
     onBlur = (v) =>
       blur v
 
     selectStyl = (filter, itemValue, opt) ->
       color: 'red' if filter is itemValue
-        
+
     c_NavBar
       mode: 'light'
       rightContent:
@@ -114,7 +113,7 @@ class Input extends React.Component
 
       c_InputItem
         placeholder: 'What needs to be done'
-        
+
         onBlur: onBlur
 
 export default Input

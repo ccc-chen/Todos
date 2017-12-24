@@ -11,17 +11,17 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
-import Input from '../components/input';
+import Input from '../../components/input';
 
 CFX = prefixDom({Input});
 
 export default function() {
-  return storiesOf('TodosState', module).add('active', () => {
+  return storiesOf('TodosState', module).add('Active', () => {
     var c_Input;
     ({c_Input} = CFX);
     return c_Input({
       filter: 'active',
-      // disable: true
+      disable: false,
       selector: function(filter) {
         return console.log(filter);
       },
