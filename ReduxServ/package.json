@@ -2,6 +2,13 @@
   "name": "ReduxServ",
   "version": "0.0.0",
   "main": "dist/bundle.js",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "rollup -c",
+    "rebuild": "npm run clean; npm run build",
+    "test": "npm run rebuild; ./test/services/index.coffee; ./test/redux/index.coffee",
+    "postinstall": "npm run build"
+  },
   "devDependencies": {
     "async-to-gen": "^1.3.3",
     "coffee-require": "^0.0.3",
@@ -13,6 +20,11 @@
     "cfx.redux-actions": "^0.0.1",
     "cfx.redux-saga": "^0.0.1",
     "cfx.redux-types": "^0.0.4",
-    "dva": "^2.0.4"
+    "cfx.rollup-plugin-coffee2": "^0.1.0",
+    "dva": "^2.0.4",
+    "rollup": "^0.51.1",
+    "rollup-plugin-alias": "^1.4.0",
+    "rollup-plugin-async": "^1.2.0",
+    "rollup-plugin-cleanup": "^2.0.0"
   }
 }

@@ -5,7 +5,7 @@ import todosReducers from '../models/reducers'
 # import dd from 'ddeyes'
 
 initialState =
-  filter: ''
+  filter: 'active'
 
 todos = handleActions
 

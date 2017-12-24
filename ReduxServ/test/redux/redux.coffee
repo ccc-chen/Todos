@@ -1,7 +1,7 @@
 import dd from 'ddeyes'
 import 'shelljs/make'
 
-import { store } from '../../'
+import { store } from '../../source'
 
 {
   constants
@@ -34,10 +34,10 @@ target.reducers = ->
         dd myStore.getState()
   }
 
-  dd myStore.getState()
+  # dd myStore.getState()
 
   myStore.dispatch actions.filterSave
     filter: '1'
 
-  myStore.onsubscribe()
+  # myStore.onsubscribe()
 
