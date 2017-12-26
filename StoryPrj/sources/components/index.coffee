@@ -8,10 +8,8 @@ import { store } from 'ReduxServ'
 import { connect } from 'cfx.react-redux'
 
 import {
-  render
   getState
 } from './components'
-
 
 CFX = prefixDom {
   Input
@@ -20,8 +18,8 @@ CFX = prefixDom {
 class StoryTodos extends Component
 
   constructor: (props) ->
-    super props
     console.log props
+    super props
     @state = 
       filter: props.state.filter
     @
@@ -43,16 +41,18 @@ class StoryTodos extends Component
     } = CFX
 
     c_Input
-      selector: (filter) ->
-        console.log filter
-        @state.actions.save
-          filter: filter
+      filter: @state.filter
+      selector: (
+        (filter) ->
+          @props.actions.save
+            filter: filter
+      ).bind @
 
 mapStateToProps = (state) ->
   getState state.todosApp.todos
 
 mapActionToProps =
-  save: actions.visitorSave
+  save: actions.filterSave
 
 export default connect(
   mapStateToProps

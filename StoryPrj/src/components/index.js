@@ -22,7 +22,6 @@ import {
 } from 'cfx.react-redux';
 
 import {
-  render,
   getState
 } from './components';
 
@@ -30,8 +29,8 @@ CFX = prefixDom({Input});
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
-    super(props);
     console.log(props);
+    super(props);
     this.state = {
       filter: props.state.filter
     };
@@ -49,11 +48,12 @@ StoryTodos = class StoryTodos extends Component {
     var c_Input;
     ({c_Input} = CFX);
     return c_Input({
-      selector: function(filter) {
-        return this.state.actions.save({
+      filter: this.state.filter,
+      selector: (function(filter) {
+        return this.props.actions.save({
           filter: filter
         });
-      }
+      }).bind(this)
     });
   }
 
@@ -64,7 +64,7 @@ mapStateToProps = function(state) {
 };
 
 mapActionToProps = {
-  save: actions.visitorSave
+  save: actions.filterSave
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

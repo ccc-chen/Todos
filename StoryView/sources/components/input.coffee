@@ -65,7 +65,7 @@ class Input extends React.Component
     # disable = false
 
     onSelect = (opt) =>
-      console.log opt.props.value
+      selector opt.props.value
       # if disable is false
       # then true
       # else false

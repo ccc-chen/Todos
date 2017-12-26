@@ -48,7 +48,7 @@ Input = class Input extends React.Component {
     };
     // disable = false
     onSelect = (opt) => {
-      return console.log(opt.props.value);
+      return selector(opt.props.value);
     };
     // if disable is false
     // then true
