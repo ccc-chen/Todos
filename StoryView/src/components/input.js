@@ -31,7 +31,7 @@ Input = class Input extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      disalbe: true
+      disalbe: false
     };
     this;
   }
@@ -46,13 +46,17 @@ Input = class Input extends React.Component {
     blur = this.props.blur != null ? this.props.blur : (blur) => {
       return console.log('Pls use props blur');
     };
+    // disable = false
     onSelect = (opt) => {
-      return selector(opt.props.value);
+      return console.log(opt.props.value);
     };
+    // if disable is false
+    // then true
+    // else false
     onBlur = (v) => {
       return blur(v);
     };
-    selectStyl = function(filter, itemValue, opt) {
+    selectStyl = function(filter, itemValue) {
       if (filter === itemValue) {
         return {
           color: 'red'
@@ -63,10 +67,11 @@ Input = class Input extends React.Component {
       mode: 'light',
       rightContent: c_Popover({
         overlayClassName: 'fortest',
+        onSelect: onSelect,
         overlayStyle: {
           color: 'currentColor'
         },
-        visible: this.props.disable,
+        // visible: onSelect
         overlay: [
           c_Item({
             key: '1',
@@ -89,9 +94,8 @@ Input = class Input extends React.Component {
           'all')
           },
           'All')
-        ],
-        // onVisibleChange: onVisibleChange
-        onSelect: onSelect
+        ]
+      // onVisibleChange: onVisibleChange
       }, c_div({
         style: {
           height: '100%',

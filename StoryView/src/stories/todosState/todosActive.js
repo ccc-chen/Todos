@@ -21,7 +21,6 @@ export default function() {
     ({c_Input} = CFX);
     return c_Input({
       filter: 'active',
-      disable: false,
       selector: function(filter) {
         return console.log(filter);
       },

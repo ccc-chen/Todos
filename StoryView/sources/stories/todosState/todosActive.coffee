@@ -22,7 +22,6 @@ export default ->
 
     c_Input
       filter: 'active'
-      disable: false
       selector: (filter) ->
         console.log filter
       blur: (v) ->

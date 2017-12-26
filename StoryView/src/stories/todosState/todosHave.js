@@ -26,10 +26,6 @@ export default function() {
         {
           value: 1,
           label: '完成2'
-        },
-        {
-          value: 2,
-          label: '完成3'
         }
       ],
       creatList: function(data) {

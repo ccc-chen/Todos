@@ -26,7 +26,7 @@ export default ->
           label: '完成1'
         ,
           value: 1
-          label: '完成2'  
+          label: '完成2'        
       ]
       
       creatList: (data) ->

@@ -34,7 +34,7 @@ class Input extends React.Component
     super props
 
     @state =
-      disalbe: true
+      disalbe: false
     @
 
   render: ->
@@ -62,13 +62,18 @@ class Input extends React.Component
       else (blur) =>
         console.log 'Pls use props blur'
 
-    onSelect = (opt) =>
-      selector opt.props.value
+    # disable = false
 
+    onSelect = (opt) =>
+      console.log opt.props.value
+      # if disable is false
+      # then true
+      # else false
+     
     onBlur = (v) =>
       blur v
 
-    selectStyl = (filter, itemValue, opt) ->
+    selectStyl = (filter, itemValue) ->
       color: 'red' if filter is itemValue
 
     c_NavBar
@@ -76,9 +81,10 @@ class Input extends React.Component
       rightContent:
         c_Popover
           overlayClassName: 'fortest'
+          onSelect: onSelect
           overlayStyle:
             color: 'currentColor'
-          visible: @props.disable
+          # visible: onSelect
 
           overlay: [
             c_Item
@@ -98,7 +104,7 @@ class Input extends React.Component
             , 'All'
           ]
           # onVisibleChange: onVisibleChange
-          onSelect: onSelect
+          
         ,
           c_div
             style:

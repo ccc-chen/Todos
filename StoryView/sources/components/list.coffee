@@ -40,7 +40,7 @@ class list extends Component
         
     onChange = (val) ->
       hasClick val
-      
+
     onPressEdit = () ->
       prompt(
         'defaultValue'
@@ -57,14 +57,14 @@ class list extends Component
     onPressDelete = () ->
       alert(
         'Delete'
-       'Are you sure???'
-       [
+        'Are you sure???'
+        [
           text: 'Cancel'
           onPress: () => console.log('cancel')
         ,  
           text: 'Ok'
           onPress: () => console.log('ok')
-       ]
+        ]
       )
     
     styleComp = (isClick) ->
@@ -81,13 +81,13 @@ class list extends Component
             c_SwipeAction
               right: [
                 text: '编辑'
-                onPress:onPressEdit
+                onPress: onPressEdit
                 style:
                   background: '#ddd'
                   color: 'white'
               ,
                 text: '删除'
-                onPress:onPressDelete
+                onPress: onPressDelete
                 style:
                   background: '#F4333C'
                   color: 'white'

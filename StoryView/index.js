@@ -1,5 +1,6 @@
 export { 
   Title,
   Input,
-  List
-} from './sources/index.coffee';
+  List,
+  todosAction
+} from './sources/index.coffee'

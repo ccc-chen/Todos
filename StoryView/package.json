@@ -1,8 +1,7 @@
 {
-  "name": "cfx.story-view-seed",
+  "name": "StoryView",
   "version": "0.0.0",
   "main": "./dist/bundle.js",
-
   "devDependencies": {
     "rollup-plugin-alias": "1.4.0",
     "antd-mobile": "2.1.1",
