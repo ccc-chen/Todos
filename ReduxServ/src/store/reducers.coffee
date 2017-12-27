@@ -7,13 +7,13 @@ import todosReducers from '../models/reducers'
 initialState =
   filter: 'active'
 
-todos = handleActions
+todosFilter = handleActions
 
   FILTER_SAVE: todosReducers.save 
 
 , initialState 
 
 export default mergeReduce {
-  todos
+  todosFilter
 }
 , initialState

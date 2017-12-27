@@ -51,7 +51,8 @@ class StoryTodos extends Component
         console.log v      
 
 mapStateToProps = (state) ->
-  getState state.todosApp.todos
+  console.log state
+  getState state.todosApp.todosFilter
 
 mapActionToProps =
   save: actions.filterSave

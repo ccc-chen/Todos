@@ -34,10 +34,10 @@ target.reducers = ->
         dd myStore.getState()
   }
 
-  # dd myStore.getState()
+  dd myStore.getState()
 
   myStore.dispatch actions.filterSave
-    filter: '1'
+    filter: 'Hello World!!!'
 
   # myStore.onsubscribe()
 

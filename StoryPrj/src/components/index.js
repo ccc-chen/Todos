@@ -63,7 +63,8 @@ StoryTodos = class StoryTodos extends Component {
 };
 
 mapStateToProps = function(state) {
-  return getState(state.todosApp.todos);
+  console.log(state);
+  return getState(state.todosApp.todosFilter);
 };
 
 mapActionToProps = {
