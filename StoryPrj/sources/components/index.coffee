@@ -47,6 +47,8 @@ class StoryTodos extends Component
           @props.actions.save
             filter: filter
       ).bind @
+      blur: (v) ->
+        console.log v      
 
 mapStateToProps = (state) ->
   getState state.todosApp.todos

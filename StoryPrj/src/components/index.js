@@ -53,7 +53,10 @@ StoryTodos = class StoryTodos extends Component {
         return this.props.actions.save({
           filter: filter
         });
-      }).bind(this)
+      }).bind(this),
+      blur: function(v) {
+        return console.log(v);
+      }
     });
   }
 

@@ -20,7 +20,7 @@ export default
         '.coffee'
         '.js'
       ]
-      src: './source/index'
+      src: './src/index'
 
     coffee2
       bare: true
