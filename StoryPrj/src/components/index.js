@@ -20,22 +20,35 @@ import {
 } from 'cfx.dom';
 
 import {
+<<<<<<< HEAD
   connect
 } from 'cfx.react-redux';
 
 import {
+=======
+>>>>>>> 12018df3530d65a7dd13269ff88cded898035d5c
   store
 } from 'ReduxServ';
 
 ({actions} = store);
 
+<<<<<<< HEAD
 console.log(actions);
+=======
+import {
+  connect
+} from 'cfx.react-redux';
+>>>>>>> 12018df3530d65a7dd13269ff88cded898035d5c
 
 import {
   getState
 } from './components';
 
+<<<<<<< HEAD
 CFX = prefixDom({Title, Input, List, 'div': 'div'});
+=======
+CFX = prefixDom({Input, List, Title, 'div': 'div'});
+>>>>>>> 12018df3530d65a7dd13269ff88cded898035d5c
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
@@ -56,7 +69,11 @@ StoryTodos = class StoryTodos extends Component {
 
   render() {
     var c_Input, c_List, c_Title, c_div;
+<<<<<<< HEAD
     ({c_div, c_Title, c_Input, c_List} = CFX);
+=======
+    ({c_Input, c_List, c_Title, c_div} = CFX);
+>>>>>>> 12018df3530d65a7dd13269ff88cded898035d5c
     return c_div({}, c_Title({}), c_Input({
       filter: this.state.filter,
       selector: (function(filter) {
