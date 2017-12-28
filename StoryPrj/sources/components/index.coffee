@@ -1,10 +1,16 @@
+import { ddbs as dd } from 'ddeyes'
+
 import React, { Component } from 'react'
 import Input from '../../../StoryView/src/components/input'
 import { prefixDom } from 'cfx.dom'
 
-import { store } from 'ReduxServ'
-{ actions } = store
+import {
+  store
+  uuidFunc
+} from 'ReduxServ'
 
+{ actions } = store
+console.log uuidFunc
 import { connect } from 'cfx.react-redux'
 
 import {
@@ -18,7 +24,7 @@ CFX = prefixDom {
 class StoryTodos extends Component
 
   constructor: (props) ->
-    console.log props
+    # console.log props
     super props
     @state = 
       filter: props.state.filter
@@ -44,18 +50,23 @@ class StoryTodos extends Component
       filter: @state.filter
       selector: (
         (filter) ->
-          @props.actions.save
+          @props.actions.filterSave
             filter: filter
       ).bind @
-      blur: (v) ->
-        console.log v      
+
+      blur: (
+        (v) ->
+          console.log v
+          @props.actions.create todo: v
+      ).bind @
 
 mapStateToProps = (state) ->
-  console.log state
+  getState state.todosApp.todos
   getState state.todosApp.todosFilter
 
 mapActionToProps =
-  save: actions.filterSave
+  filterSave: actions.filterSave
+  create: actions.todosCreate
 
 export default connect(
   mapStateToProps
