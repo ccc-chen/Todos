@@ -65,7 +65,6 @@ class StoryTodos extends Component
           (v) ->
             @props.actions.create todo: v
             console.log @props.actions.create todo: v
-            # store.getStore()
         ).bind @
       
       c_List

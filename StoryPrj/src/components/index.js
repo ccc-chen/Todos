@@ -68,10 +68,9 @@ StoryTodos = class StoryTodos extends Component {
         this.props.actions.create({
           todo: v
         });
-        console.log(this.props.actions.create({
+        return console.log(this.props.actions.create({
           todo: v
         }));
-        return store.getStore();
       }).bind(this)
     }), c_List({
       data: [

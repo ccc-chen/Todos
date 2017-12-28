@@ -1,14 +1,14 @@
 import { storiesOf } from '@storybook/react'
 import { prefixDom } from 'cfx.dom'
 import 'antd-mobile/dist/antd-mobile.css'
-import Input from '../components'
+import Todos from '../components'
 import { Provider } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
 
 todosStore = store.store
 
 CFX = prefixDom {
-  Input
+  Todos
   Provider
 }
 
@@ -23,15 +23,15 @@ export default ->
     c_Provider
       store: todosStore
     , story()  
-  .add 'Input'
+  .add 'Todos'
 
   , =>
 
     {
-      c_Input
+      c_Todos
     } = CFX
 
-    c_Input {}
+    c_Todos {}
       
 
           
