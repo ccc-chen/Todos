@@ -11,7 +11,7 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
-import Input from '../components';
+import Todos from '../components';
 
 import {
   Provider
@@ -23,7 +23,7 @@ import {
 
 todosStore = store.store;
 
-CFX = prefixDom({Input, Provider});
+CFX = prefixDom({Todos, Provider});
 
 export default function() {
   return storiesOf('Todos', module).addDecorator(function(story) {
@@ -32,9 +32,9 @@ export default function() {
     return c_Provider({
       store: todosStore
     }, story());
-  }).add('Input', () => {
-    var c_Input;
-    ({c_Input} = CFX);
-    return c_Input({});
+  }).add('Todos', () => {
+    var c_Todos;
+    ({c_Todos} = CFX);
+    return c_Todos({});
   });
 };

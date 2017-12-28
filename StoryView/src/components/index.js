@@ -16,5 +16,16 @@ CFX = prefixDom({'div': 'div', Title, Input, List});
 export default function() {
   var c_Input, c_List, c_Title, c_div;
   ({c_div, c_Title, c_Input, c_List} = CFX);
-  return c_div({}, c_Title({}), c_Input({}), c_List({}));
+  return c_div({}, c_Title({}), c_Input({}), c_List({
+    data: [
+      {
+        value: 0,
+        label: '完成1'
+      },
+      {
+        value: 1,
+        label: '完成2'
+      }
+    ]
+  }));
 };

@@ -23,4 +23,11 @@ export default ->
   ,
     c_Title {}
     c_Input {}
-    c_List {}
+    c_List
+      data: [
+            value: 0
+            label: '完成1'
+          ,
+            value: 1
+            label: '完成2'
+        ]

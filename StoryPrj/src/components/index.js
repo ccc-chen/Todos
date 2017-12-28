@@ -11,18 +11,19 @@ import React, {
 
 import Input from '../../../StoryView/src/components/input';
 
+import List from '../../../StoryView/src/components/list';
+
+import Title from '../../../StoryView/src/components/title';
+
 import {
   prefixDom
 } from 'cfx.dom';
 
 import {
-  store,
-  uuidFunc
+  store
 } from 'ReduxServ';
 
 ({actions} = store);
-
-console.log(uuidFunc);
 
 import {
   connect
@@ -32,7 +33,7 @@ import {
   getState
 } from './components';
 
-CFX = prefixDom({Input});
+CFX = prefixDom({Input, List, Title, 'div': 'div'});
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
@@ -52,9 +53,9 @@ StoryTodos = class StoryTodos extends Component {
   }
 
   render() {
-    var c_Input;
-    ({c_Input} = CFX);
-    return c_Input({
+    var c_Input, c_List, c_Title, c_div;
+    ({c_Input, c_List, c_Title, c_div} = CFX);
+    return c_div({}, c_Title({}), c_Input({
       filter: this.state.filter,
       selector: (function(filter) {
         return this.props.actions.filterSave({
@@ -67,7 +68,27 @@ StoryTodos = class StoryTodos extends Component {
           todo: v
         });
       }).bind(this)
-    });
+    }), c_List({
+      data: [
+        {
+          value: 0,
+          label: '完成1'
+        },
+        {
+          value: 1,
+          label: '完成2'
+        }
+      ],
+      creatList: function(data) {
+        return console.log('hello');
+      },
+      isClick: false,
+      str: ' ',
+      hasClick: function(str) {
+        console.log('key:');
+        return console.log(str);
+      }
+    }));
   }
 
 };
