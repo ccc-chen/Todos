@@ -11,32 +11,35 @@ import React, {
 
 import Input from '../../../StoryView/src/components/input';
 
+import List from '../../../StoryView/src/components/list';
+
+import Title from '../../../StoryView/src/components/title';
+
 import {
   prefixDom
 } from 'cfx.dom';
-
-import {
-  store,
-  uuidFunc
-} from 'ReduxServ';
-
-({actions} = store);
-
-console.log(uuidFunc);
 
 import {
   connect
 } from 'cfx.react-redux';
 
 import {
+  store
+} from 'ReduxServ';
+
+({actions} = store);
+
+console.log(actions);
+
+import {
   getState
 } from './components';
 
-CFX = prefixDom({Input});
+CFX = prefixDom({Title, Input, List, 'div': 'div'});
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
-    // console.log props
+    console.log(props);
     super(props);
     this.state = {
       filter: props.state.filter
@@ -52,9 +55,9 @@ StoryTodos = class StoryTodos extends Component {
   }
 
   render() {
-    var c_Input;
-    ({c_Input} = CFX);
-    return c_Input({
+    var c_Input, c_List, c_Title, c_div;
+    ({c_div, c_Title, c_Input, c_List} = CFX);
+    return c_div({}, c_Title({}), c_Input({
       filter: this.state.filter,
       selector: (function(filter) {
         return this.props.actions.filterSave({
@@ -62,12 +65,35 @@ StoryTodos = class StoryTodos extends Component {
         });
       }).bind(this),
       blur: (function(v) {
-        console.log(v);
-        return this.props.actions.create({
+        this.props.actions.create({
           todo: v
         });
+        console.log(this.props.actions.create({
+          todo: v
+        }));
+        return store.getStore();
       }).bind(this)
-    });
+    }), c_List({
+      data: [
+        {
+          value: 0,
+          label: '完成1'
+        },
+        {
+          value: 1,
+          label: '完成2'
+        }
+      ],
+      creatList: function(data) {
+        return console.log('hello');
+      },
+      isClick: false,
+      str: ' ',
+      hasClick: function(str) {
+        console.log('key:');
+        return console.log(str);
+      }
+    }));
   }
 
 };
@@ -79,7 +105,8 @@ mapStateToProps = function(state) {
 
 mapActionToProps = {
   filterSave: actions.filterSave,
-  create: actions.todosCreate
+  create: actions.todosCreate,
+  fetch: actions.todosFetch
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

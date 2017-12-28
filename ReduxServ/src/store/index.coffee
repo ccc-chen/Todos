@@ -6,7 +6,7 @@ import reducers from './reducers'
 # import dd from 'ddeyes'
 
 store = getStore {
-  appName: 'todosApp'
+  appName: 'todosRedux'
   reducers
 }
 
