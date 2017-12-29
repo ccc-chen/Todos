@@ -11,7 +11,4 @@ export default
       }
     }
   ) ->
-    {
-      state...
-      filter
-    }
+    filter

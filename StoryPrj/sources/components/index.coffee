@@ -27,7 +27,7 @@ CFX = prefixDom {
 class StoryTodos extends Component
 
   constructor: (props) ->
-    console.log props
+    
     super props
     @state = 
       filter: props.state.filter
@@ -42,7 +42,6 @@ class StoryTodos extends Component
       filter
     }
     @
-    console.log nextProps
 
   render: ->
 
@@ -53,7 +52,7 @@ class StoryTodos extends Component
       c_List
     } = CFX
 
-
+    
     c_div {}
     ,
       c_Title {}
@@ -71,21 +70,18 @@ class StoryTodos extends Component
         ).bind @
       
       c_List
-        data: [
-            value: 0
-            label: '完成1'
-          ,
-            value: 1
-            label: '完成2'
-          ,
-        ]
-        
-        creatList: (data) ->
-          console.log 'hello'
-          
+        data: store.store.getState().todosRedux.todos          
         isClick: false
         str: ' '
         
+        Delete: (
+          (key) ->
+            # console.log key
+            @props.actions.removeOne 
+              id: key
+        ).bind @ 
+
+
         hasClick: (str) ->
           console.log 'key:'
           console.log str         
@@ -96,13 +92,10 @@ mapStateToProps = (state) ->
 mapActionToProps =
   filterSave: actions.filterSave
   create: actions.todosCreate
+  removeOne: actions.todosRemoveOne
 
 export default connect(
   mapStateToProps
   mapActionToProps
   StoryTodos
 )
-
-
-
-

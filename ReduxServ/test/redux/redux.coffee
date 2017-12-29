@@ -36,15 +36,15 @@ target.reducers = ->
 
   dd myStore.getState()
 
-  myStore.dispatch actions.todosCreateOne
-    todo:
-      id: 1
-      company: '武汉举手帮租有限公司'
-      main: '旅游、租房'
-      location: '武汉'
+  # myStore.dispatch actions.todosCreateOne
+  #   todo:
+  #     id: 1
+  #     company: '武汉举手帮租有限公司'
+  #     main: '旅游、租房'
+  #     location: '武汉'
 
   myStore.dispatch actions.filterSave
-    filter: 'Hello World'   
+    filter: 'Hello World'
 
   # myStore.dispatch actions.filterSave
   #   filter: 'Hello World!!!'

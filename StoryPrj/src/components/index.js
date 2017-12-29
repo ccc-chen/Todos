@@ -37,7 +37,6 @@ CFX = prefixDom({Title, Input, List, 'div': 'div'});
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       filter: props.state.filter
@@ -49,8 +48,7 @@ StoryTodos = class StoryTodos extends Component {
     var filter;
     ({filter} = nextProps.state);
     this.setState({filter});
-    this;
-    return console.log(nextProps);
+    return this;
   }
 
   render() {
@@ -69,21 +67,15 @@ StoryTodos = class StoryTodos extends Component {
         });
       }).bind(this)
     }), c_List({
-      data: [
-        {
-          value: 0,
-          label: '完成1'
-        },
-        {
-          value: 1,
-          label: '完成2'
-        }
-      ],
-      creatList: function(data) {
-        return console.log('hello');
-      },
+      data: store.store.getState().todosRedux.todos,
       isClick: false,
       str: ' ',
+      Delete: (function(key) {
+        // console.log key
+        return this.props.actions.removeOne({
+          id: key
+        });
+      }).bind(this),
       hasClick: function(str) {
         console.log('key:');
         return console.log(str);
@@ -99,7 +91,8 @@ mapStateToProps = function(state) {
 
 mapActionToProps = {
   filterSave: actions.filterSave,
-  create: actions.todosCreate
+  create: actions.todosCreate,
+  removeOne: actions.todosRemoveOne
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

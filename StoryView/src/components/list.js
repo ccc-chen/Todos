@@ -25,11 +25,15 @@ CFX = prefixDom({List, SwipeAction, CheckboxItem});
 // prompt
 list = class list extends Component {
   render() {
-    var c_CheckboxItem, c_List, c_SwipeAction, hasClick, onChange, onPressDelete, onPressEdit, styleComp;
+    var Delete, DeletePress, c_CheckboxItem, c_List, c_SwipeAction, hasClick, onChange, onPressDelete, onPressEdit, styleComp;
     ({c_List, c_CheckboxItem, c_SwipeAction} = CFX);
     hasClick = this.props.hasClick != null ? this.props.hasClick : (hasClick) => {
       console.log('pls run hasClick function!');
       return console.log(hasClick);
+    };
+    Delete = this.props.Delete != null ? this.props.Delete : (Delete) => {
+      console.log('pls run Delete function!');
+      return console.log(Delete);
     };
     onChange = function(val) {
       return hasClick(val);
@@ -47,7 +51,8 @@ list = class list extends Component {
         }
       ], 'default', '100');
     };
-    onPressDelete = function() {
+    onPressDelete = function(id) {
+      // console.log 'props', pro      
       return alert('Delete', 'Are you sure???', [
         {
           text: 'Cancel',
@@ -58,10 +63,13 @@ list = class list extends Component {
         {
           text: 'Ok',
           onPress: () => {
-            return console.log('ok');
+            return DeletePress(id);
           }
         }
       ]);
+    };
+    DeletePress = function(id) {
+      return Delete(id);
     };
     styleComp = function(isClick) {
       if (isClick === true) {
@@ -91,7 +99,9 @@ list = class list extends Component {
               },
               {
                 text: '删除',
-                onPress: onPressDelete,
+                onPress: function() {
+                  return onPressDelete(c.id);
+                },
                 style: {
                   background: '#F4333C',
                   color: 'white'
@@ -100,14 +110,14 @@ list = class list extends Component {
             ]
           },
           c_CheckboxItem({
-            key: c.value,
+            id: c.id,
             style: styleComp(this.props.isClick),
             onChange: function() {
-              return onChange(c.value);
+              return onChange(c.id);
             },
             defaultChecked: false
           },
-          c.label))
+          c.todo))
         ];
       },
       []))

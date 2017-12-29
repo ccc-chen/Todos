@@ -29,18 +29,25 @@ class list extends Component
       c_List
       c_CheckboxItem
       c_SwipeAction
-    } = CFX                                
-    
+    } = CFX   
+                                 
     hasClick =
       if @props.hasClick?
       then @props.hasClick
       else (hasClick) =>
         console.log 'pls run hasClick function!'
         console.log hasClick
+
+    Delete =
+      if @props.Delete?
+      then @props.Delete
+      else (Delete) =>
+        console.log 'pls run Delete function!'
+        console.log Delete
         
     onChange = (val) ->
       hasClick val
-
+      
     onPressEdit = () ->
       prompt(
         'defaultValue'
@@ -53,8 +60,9 @@ class list extends Component
         ]
         'default'
         '100')
-
-    onPressDelete = () ->
+    
+    onPressDelete = (id) ->
+      # console.log 'props', pro      
       alert(
         'Delete'
         'Are you sure???'
@@ -63,10 +71,15 @@ class list extends Component
           onPress: () => console.log('cancel')
         ,  
           text: 'Ok'
-          onPress: () => console.log('ok')
+          onPress:() => DeletePress(id)
         ]
       )
     
+    DeletePress = (id) ->
+      Delete id
+      
+
+
     styleComp = (isClick) ->
       textDecorationLine: 'line-through' if isClick is true
         
@@ -87,19 +100,19 @@ class list extends Component
                   color: 'white'
               ,
                 text: '删除'
-                onPress: onPressDelete
+                onPress: () -> onPressDelete(c.id)
                 style:
                   background: '#F4333C'
                   color: 'white'
               ]
             ,
             c_CheckboxItem
-              key: c.value
+              id: c.id
               style:
                 styleComp @props.isClick
-              onChange: () -> onChange(c.value)
+              onChange: () -> onChange(c.id)
               defaultChecked: false
-            , c.label
+            , c.todo
           ]
         , []
       )...
