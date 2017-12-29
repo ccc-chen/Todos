@@ -9,7 +9,7 @@ import { store } from 'todosRedux'
 
 initialState = {
   todos: store.initialState.list_todos
-  filter: 'active'
+  filter: 'all'
 }
 
 todosFilter = handleActions
@@ -20,6 +20,6 @@ todosFilter = handleActions
 
 export default mergeReduce {
   todos
-  todosFilter
+  filter: todosFilter
 }
 , initialState
