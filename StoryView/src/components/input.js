@@ -109,7 +109,8 @@ Input = class Input extends React.Component {
       })))
     }, c_InputItem({
       placeholder: 'What needs to be done',
-      onBlur: onBlur
+      onBlur: onBlur,
+      clear: true
     }));
   }
 

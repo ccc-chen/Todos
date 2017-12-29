@@ -58,9 +58,10 @@ class StoryTodos extends Component
     ,
       c_Title {}
       c_Input
-        filter: @state.filter
+        filter: 'active'
         selector: (
           (filter) ->
+            console.log @state
             @props.actions.filterSave
               filter: filter
         ).bind @
@@ -68,7 +69,7 @@ class StoryTodos extends Component
         blur: (
           (v) ->
             @props.actions.create todo: v
-            console.log store.store.getState()
+            # console.log store.store.getState()
             # console.log @props.actions.create todo: v
             # console.log store.getStore { 
             #   appName: 'todosApp'
@@ -100,8 +101,8 @@ class StoryTodos extends Component
           console.log str         
 
 mapStateToProps = (state) ->
-  getState state.todosApp.todos
-  getState state.todosApp.todosFilter
+  console.log state.todosRedux.todosFilter
+  getState state.todosRedux.todosFilte
 
 mapActionToProps =
   filterSave: actions.filterSave

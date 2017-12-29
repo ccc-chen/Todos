@@ -57,17 +57,18 @@ StoryTodos = class StoryTodos extends Component {
     var c_Input, c_List, c_Title, c_div;
     ({c_div, c_Title, c_Input, c_List} = CFX);
     return c_div({}, c_Title({}), c_Input({
-      filter: this.state.filter,
+      filter: 'active',
       selector: (function(filter) {
+        console.log(this.state);
         return this.props.actions.filterSave({
           filter: filter
         });
       }).bind(this),
       blur: (function(v) {
-        this.props.actions.create({
+        return this.props.actions.create({
           todo: v
         });
-        return console.log(store.store.getState());
+      // console.log store.store.getState()
       // console.log @props.actions.create todo: v
       // console.log store.getStore { 
       //   appName: 'todosApp'
@@ -103,8 +104,8 @@ StoryTodos = class StoryTodos extends Component {
 };
 
 mapStateToProps = function(state) {
-  getState(state.todosApp.todos);
-  return getState(state.todosApp.todosFilter);
+  console.log(state.todosRedux.todosFilter);
+  return getState(state.todosRedux.todosFilte);
 };
 
 mapActionToProps = {

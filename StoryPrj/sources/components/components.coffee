@@ -1,9 +1,10 @@
-getState = (state) ->
-  { 
-    filter
-  } = state
-  
-  { filter }
+getState = ({
+  filter
+  todos
+}) -> {
+  filter
+  todos
+}
 
 export {
   getState
