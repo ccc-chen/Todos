@@ -8,8 +8,11 @@ import { prefixDom } from 'cfx.dom'
 
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
-{ actions } = store
-console.log actions
+{ 
+  actions 
+  reducers
+} = store
+
 import {
   getState
 } from './components'
@@ -20,7 +23,7 @@ CFX = prefixDom {
   List
   'div'
 }
-##...
+
 class StoryTodos extends Component
 
   constructor: (props) ->
@@ -39,6 +42,7 @@ class StoryTodos extends Component
       filter
     }
     @
+    console.log nextProps
 
   render: ->
 
@@ -64,7 +68,15 @@ class StoryTodos extends Component
         blur: (
           (v) ->
             @props.actions.create todo: v
-            console.log @props.actions.create todo: v
+            console.log store.store.getState()
+            # console.log @props.actions.create todo: v
+            # console.log store.getStore { 
+            #   appName: 'todosApp'
+            #   reducers
+            #   subscriber:
+            #     sync: ->
+            #       dd myStore.getState()
+            # }
         ).bind @
       
       c_List
@@ -94,7 +106,6 @@ mapStateToProps = (state) ->
 mapActionToProps =
   filterSave: actions.filterSave
   create: actions.todosCreate
-  fetch: actions.todosFetch
 
 export default connect(
   mapStateToProps
