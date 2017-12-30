@@ -5,10 +5,11 @@ import dd from 'ddeyes'
 import { mergeReduce } from 'cfx.redux'
 import todosReducers from '../models/reducers'
 import { store } from 'todosRedux'
+
 { todos } = store
 
 initialState = {
-  todos: store.initialState.list_todos
+  todos: store.initialState.todos
   filter: 'all'
 }
 

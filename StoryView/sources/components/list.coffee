@@ -44,9 +44,19 @@ class list extends Component
       else (Delete) =>
         console.log 'pls run Delete function!'
         console.log Delete
+
+    Patch =
+      if @props.Patch?
+      then @props.Patch
+      else (Patch) =>
+        console.log 'pls run Patch function!'
+        console.log Patch      
         
     onChange = (val) ->
       hasClick val
+
+    DeletePress = (id) ->
+      Delete id      
       
     onPressEdit = () ->
       prompt(
@@ -74,10 +84,6 @@ class list extends Component
           onPress:() => DeletePress(id)
         ]
       )
-    
-    DeletePress = (id) ->
-      Delete id
-      
 
 
     styleComp = (isClick) ->

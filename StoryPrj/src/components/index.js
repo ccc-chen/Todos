@@ -33,10 +33,13 @@ import {
   getState
 } from './components';
 
+console.log(actions);
+
 CFX = prefixDom({Title, Input, List, 'div': 'div'});
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
+    console.log(props);
     super(props);
     this.state = {
       filter: props.state.filter
@@ -76,6 +79,12 @@ StoryTodos = class StoryTodos extends Component {
           id: key
         });
       }).bind(this),
+      Patch1: (function(key, value) {
+        return this.props.actions.patch({
+          id: key,
+          todo: value
+        });
+      }).bind(this),
       hasClick: function(str) {
         console.log('key:');
         return console.log(str);
@@ -92,7 +101,8 @@ mapStateToProps = function(state) {
 mapActionToProps = {
   filterSave: actions.filterSave,
   create: actions.todosCreate,
-  removeOne: actions.todosRemoveOne
+  removeOne: actions.todosRemoveOne,
+  patch: actions.todosPatchOne
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

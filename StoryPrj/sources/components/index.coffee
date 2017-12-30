@@ -16,7 +16,7 @@ import { store } from 'ReduxServ'
 import {
   getState
 } from './components'
-
+console.log actions
 CFX = prefixDom {
   Title
   Input
@@ -27,7 +27,7 @@ CFX = prefixDom {
 class StoryTodos extends Component
 
   constructor: (props) ->
-    
+    console.log props
     super props
     @state = 
       filter: props.state.filter
@@ -79,7 +79,14 @@ class StoryTodos extends Component
             # console.log key
             @props.actions.removeOne 
               id: key
-        ).bind @ 
+        ).bind @
+
+        Patch1: (
+          (key, value) ->
+            @props.actions.patch
+              id: key
+              todo: value
+        ).bind @
 
 
         hasClick: (str) ->
@@ -93,6 +100,7 @@ mapActionToProps =
   filterSave: actions.filterSave
   create: actions.todosCreate
   removeOne: actions.todosRemoveOne
+  patch: actions.todosPatchOne
 
 export default connect(
   mapStateToProps
