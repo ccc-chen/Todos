@@ -12,11 +12,9 @@ import { store } from 'ReduxServ'
   actions 
   reducers
 } = store
-
-import {
-  getState
-} from './components'
 console.log actions
+import { getState } from './components'
+
 CFX = prefixDom {
   Title
   Input
@@ -27,7 +25,6 @@ CFX = prefixDom {
 class StoryTodos extends Component
 
   constructor: (props) ->
-    console.log props
     super props
     @state = 
       filter: props.state.filter
@@ -71,18 +68,18 @@ class StoryTodos extends Component
       
       c_List
         data: store.store.getState().todosRedux.todos          
-        isClick: false
+        isClick: true
         str: ' '
         
         Delete: (
           (key) ->
-            # console.log key
-            @props.actions.removeOne 
+            @props.actions.removeOne
               id: key
         ).bind @
 
-        Patch1: (
+        Patch: (
           (key, value) ->
+            console.log key, value, '111111'
             @props.actions.patch
               id: key
               todo: value
@@ -91,7 +88,7 @@ class StoryTodos extends Component
 
         hasClick: (str) ->
           console.log 'key:'
-          console.log str         
+          console.log str     
 
 mapStateToProps = (state) ->
   getState state.todosRedux
@@ -100,7 +97,8 @@ mapActionToProps =
   filterSave: actions.filterSave
   create: actions.todosCreate
   removeOne: actions.todosRemoveOne
-  patch: actions.todosPatchOne
+  patch: actions.todosPatch
+
 
 export default connect(
   mapStateToProps

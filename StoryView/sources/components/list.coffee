@@ -56,9 +56,14 @@ class list extends Component
       hasClick val
 
     DeletePress = (id) ->
-      Delete id      
+      Delete id
+
+    PatchPress = (id, todo) ->
+      Patch id, todo   
+
       
-    onPressEdit = () ->
+    onPressEdit = (id, todo) ->
+      console.log id, todo
       prompt(
         'defaultValue'
         'defaultValue for prompt'
@@ -66,13 +71,13 @@ class list extends Component
             text: 'Cancel'
           ,
             text: 'Submit'
-            onPress: (value) => console.log "输入的内容:#{value}"
+            onPress: (value) => PatchPress(id, value)
         ]
         'default'
-        '100')
+      todo)
     
     onPressDelete = (id) ->
-      # console.log 'props', pro      
+      console.log '删除的id是:', id
       alert(
         'Delete'
         'Are you sure???'
@@ -85,10 +90,8 @@ class list extends Component
         ]
       )
 
-
     styleComp = (isClick) ->
       textDecorationLine: 'line-through' if isClick is true
-        
 
     c_List.apply @, [
       renderHeader: ' '
@@ -100,7 +103,7 @@ class list extends Component
             c_SwipeAction
               right: [
                 text: '编辑'
-                onPress: onPressEdit
+                onPress: () -> onPressEdit(c.id, c.todo)
                 style:
                   background: '#ddd'
                   color: 'white'
