@@ -1,18 +1,15 @@
 import { ddbs as dd } from 'ddeyes'
-
 import React, { Component } from 'react'
 import Input from '../../../StoryView/src/components/input'
 import List from '../../../StoryView/src/components/list'
 import Title from '../../../StoryView/src/components/title'
 import { prefixDom } from 'cfx.dom'
-
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
 { 
   actions 
   reducers
 } = store
-console.log actions
 import { getState } from './components'
 
 CFX = prefixDom {
@@ -30,7 +27,6 @@ class StoryTodos extends Component
       filter: props.state.filter
     @
 
- 
   componentWillReceiveProps: (nextProps) ->
     {
       filter
@@ -39,7 +35,7 @@ class StoryTodos extends Component
       filter
     }
     @
-
+     
   render: ->
 
     {
@@ -49,7 +45,6 @@ class StoryTodos extends Component
       c_List
     } = CFX
 
-    
     c_div {}
     ,
       c_Title {}
@@ -65,12 +60,15 @@ class StoryTodos extends Component
           (v) ->
             @props.actions.create todo: v
         ).bind @
-      
+
       c_List
         data: store.store.getState().todosRedux.todos          
-        isClick: true
-        str: ' '
         
+        styleChange: (
+          (id,isCompleted) ->
+            textDecorationLine: 'line-through' if isCompleted is true
+        ).bind @
+
         Delete: (
           (key) ->
             @props.actions.removeOne
@@ -79,16 +77,19 @@ class StoryTodos extends Component
 
         Patch: (
           (key, value) ->
-            console.log key, value, '111111'
             @props.actions.patch
               id: key
               todo: value
+              isCompleted: false
         ).bind @
 
-
-        hasClick: (str) ->
-          console.log 'key:'
-          console.log str     
+        hasClick: (
+          (key, todo, isCompleted) ->
+            @props.actions.patch
+              id: key
+              todo: todo
+              isCompleted: !isCompleted
+        ). bind @
 
 mapStateToProps = (state) ->
   getState state.todosRedux
@@ -98,8 +99,7 @@ mapActionToProps =
   create: actions.todosCreate
   removeOne: actions.todosRemoveOne
   patch: actions.todosPatch
-
-
+  save: actions.todosSave
 export default connect(
   mapStateToProps
   mapActionToProps

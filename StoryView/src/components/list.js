@@ -25,7 +25,7 @@ CFX = prefixDom({List, SwipeAction, CheckboxItem});
 // prompt
 list = class list extends Component {
   render() {
-    var Delete, DeletePress, Patch, PatchPress, c_CheckboxItem, c_List, c_SwipeAction, hasClick, onChange, onPressDelete, onPressEdit, styleComp;
+    var Delete, DeletePress, Patch, PatchPress, c_CheckboxItem, c_List, c_SwipeAction, hasClick, onChange, onPressDelete, onPressEdit, styleChange, styleComp;
     ({c_List, c_CheckboxItem, c_SwipeAction} = CFX);
     hasClick = this.props.hasClick != null ? this.props.hasClick : (hasClick) => {
       console.log('pls run hasClick function!');
@@ -39,8 +39,13 @@ list = class list extends Component {
       console.log('pls run Patch function!');
       return console.log(Patch);
     };
-    onChange = function(val) {
-      return hasClick(val);
+    styleChange = this.props.styleChange != null ? this.props.styleChange : (styleChange) => {
+      console.log('pls run styleChange function!');
+      return console.log(styleChange);
+    };
+    onChange = function(id, todo, isCompleted) {
+      hasClick(id, todo, isCompleted);
+      return styleComp(id, isCompleted);
     };
     DeletePress = function(id) {
       return Delete(id);
@@ -80,15 +85,8 @@ list = class list extends Component {
         }
       ]);
     };
-    ({
-      isClick: true
-    });
-    styleComp = function(isClick) {
-      if (isClick === true) {
-        return {
-          textDecorationLine: 'line-through'
-        };
-      }
+    styleComp = function(id, isCompleted) {
+      return styleChange(id, isCompleted);
     };
     return c_List.apply(this, [
       {
@@ -126,9 +124,12 @@ list = class list extends Component {
           },
           c_CheckboxItem({
             id: c.id,
-            style: styleComp(this.props.isClick),
+            style: styleComp(c.id,
+          c.isCompleted),
             onChange: function() {
-              return onChange(c.id);
+              return onChange(c.id,
+          c.todo,
+          c.isCompleted);
             },
             defaultChecked: false
           },

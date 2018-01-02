@@ -115,4 +115,5 @@ Input = class Input extends React.Component {
 
 };
 
+// clear: true
 export default Input;

@@ -19,6 +19,26 @@ export default function() {
   return storiesOf('Todos', module).add('List', () => {
     var c_List;
     ({c_List} = CFX);
-    return c_List({});
+    return c_List({
+      data: [
+        {
+          value: 0,
+          label: '完成1'
+        },
+        {
+          value: 1,
+          label: '完成2'
+        }
+      ],
+      creatList: function(data) {
+        return console.log('hello');
+      },
+      isClick: true,
+      str: ' ',
+      hasClick: function(str) {
+        console.log('key:');
+        return console.log(str);
+      }
+    });
   });
 };

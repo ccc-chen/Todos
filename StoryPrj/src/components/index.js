@@ -29,8 +29,6 @@ import {
 
 ({actions, reducers} = store);
 
-console.log(actions);
-
 import {
   getState
 } from './components';
@@ -70,24 +68,32 @@ StoryTodos = class StoryTodos extends Component {
       }).bind(this)
     }), c_List({
       data: store.store.getState().todosRedux.todos,
-      isClick: true,
-      str: ' ',
+      styleChange: (function(id, isCompleted) {
+        if (isCompleted === true) {
+          return {
+            textDecorationLine: 'line-through'
+          };
+        }
+      }).bind(this),
       Delete: (function(key) {
         return this.props.actions.removeOne({
           id: key
         });
       }).bind(this),
       Patch: (function(key, value) {
-        console.log(key, value, '111111');
         return this.props.actions.patch({
           id: key,
-          todo: value
+          todo: value,
+          isCompleted: false
         });
       }).bind(this),
-      hasClick: function(str) {
-        console.log('key:');
-        return console.log(str);
-      }
+      hasClick: (function(key, todo, isCompleted) {
+        return this.props.actions.patch({
+          id: key,
+          todo: todo,
+          isCompleted: !isCompleted
+        });
+      }).bind(this)
     }));
   }
 
@@ -101,7 +107,8 @@ mapActionToProps = {
   filterSave: actions.filterSave,
   create: actions.todosCreate,
   removeOne: actions.todosRemoveOne,
-  patch: actions.todosPatch
+  patch: actions.todosPatch,
+  save: actions.todosSave
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

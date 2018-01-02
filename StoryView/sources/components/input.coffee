@@ -120,5 +120,6 @@ class Input extends React.Component
       c_InputItem
         placeholder: 'What needs to be done'
         onBlur: onBlur
+        # clear: true
 
 export default Input

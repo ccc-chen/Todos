@@ -7,7 +7,6 @@ export default
     {
       payload: {
         filter
-        
       }
     }
   ) ->

@@ -50,10 +50,18 @@ class list extends Component
       then @props.Patch
       else (Patch) =>
         console.log 'pls run Patch function!'
-        console.log Patch      
+        console.log Patch
+
+    styleChange =
+      if @props.styleChange?
+      then @props.styleChange
+      else (styleChange) =>
+        console.log 'pls run styleChange function!'
+        console.log styleChange       
         
-    onChange = (val) ->
-      hasClick val
+    onChange = (id, todo, isCompleted) ->
+      hasClick id, todo, isCompleted
+      styleComp id,isCompleted
 
     DeletePress = (id) ->
       Delete id
@@ -83,15 +91,15 @@ class list extends Component
         'Are you sure???'
         [
           text: 'Cancel'
-          onPress: () => console.log('cancel')
+          onPress: () => console.log 'cancel'
         ,  
           text: 'Ok'
-          onPress:() => DeletePress(id)
+          onPress:() => DeletePress id
         ]
       )
 
-    styleComp = (isClick) ->
-      textDecorationLine: 'line-through' if isClick is true
+    styleComp = (id,isCompleted) ->
+      styleChange id, isCompleted
 
     c_List.apply @, [
       renderHeader: ' '
@@ -103,13 +111,13 @@ class list extends Component
             c_SwipeAction
               right: [
                 text: '编辑'
-                onPress: () -> onPressEdit(c.id, c.todo)
+                onPress: () -> onPressEdit c.id, c.todo
                 style:
                   background: '#ddd'
                   color: 'white'
               ,
                 text: '删除'
-                onPress: () -> onPressDelete(c.id)
+                onPress: () -> onPressDelete c.id
                 style:
                   background: '#F4333C'
                   color: 'white'
@@ -118,8 +126,8 @@ class list extends Component
             c_CheckboxItem
               id: c.id
               style:
-                styleComp @props.isClick
-              onChange: () -> onChange(c.id)
+                styleComp c.id, c.isCompleted
+              onChange: () -> onChange c.id, c.todo, c.isCompleted
               defaultChecked: false
             , c.todo
           ]
