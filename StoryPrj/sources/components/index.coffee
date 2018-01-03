@@ -20,8 +20,8 @@ CFX = prefixDom {
 }
 
 class StoryTodos extends Component
-
   constructor: (props) ->
+    console.log props
     super props
     @state = 
       filter: props.state.filter
@@ -35,7 +35,7 @@ class StoryTodos extends Component
       filter
     }
     @
-     
+    # console.log store.store.getState().todosRedux.todos
   render: ->
 
     {
@@ -54,6 +54,10 @@ class StoryTodos extends Component
           (filter) ->
             @props.actions.filterSave
               filter: filter
+            if filter is 'active'
+              @props.Packet false
+            else if filter is 'completed'
+              @props.Packet true
         ).bind @
 
         blur: (
@@ -62,10 +66,10 @@ class StoryTodos extends Component
         ).bind @
 
       c_List
-        data: store.store.getState().todosRedux.todos          
-        
+        data: store.store.getState().todosRedux.todos
         styleChange: (
-          (id,isCompleted) ->
+          console.log @props   
+          (id, isCompleted) ->
             textDecorationLine: 'line-through' if isCompleted is true
         ).bind @
 
@@ -100,6 +104,7 @@ mapActionToProps =
   removeOne: actions.todosRemoveOne
   patch: actions.todosPatch
   save: actions.todosSave
+
 export default connect(
   mapStateToProps
   mapActionToProps

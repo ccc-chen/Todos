@@ -104,7 +104,6 @@ class Input extends React.Component
             , 'All'
           ]
           # onVisibleChange: onVisibleChange
-          
         ,
           c_div
             style:
