@@ -21,21 +21,23 @@ CFX = prefixDom {
 
 class StoryTodos extends Component
   constructor: (props) ->
-    console.log props
     super props
     @state = 
       filter: props.state.filter
+      # todos: props.state.Packets
     @
 
   componentWillReceiveProps: (nextProps) ->
     {
       filter
+      # todos
     } = nextProps.state
     @setState {
       filter
+      # todos
     }
     @
-    # console.log store.store.getState().todosRedux.todos
+    console.log nextProps
   render: ->
 
     {
@@ -66,9 +68,8 @@ class StoryTodos extends Component
         ).bind @
 
       c_List
-        data: store.store.getState().todosRedux.todos
+        data: @props.state.todos
         styleChange: (
-          console.log @props   
           (id, isCompleted) ->
             textDecorationLine: 'line-through' if isCompleted is true
         ).bind @

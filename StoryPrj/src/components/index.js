@@ -37,22 +37,24 @@ CFX = prefixDom({Title, Input, List, 'div': 'div'});
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       filter: props.state.filter
     };
+    // todos: props.state.Packets
     this;
   }
 
   componentWillReceiveProps(nextProps) {
     var filter;
+    // todos
     ({filter} = nextProps.state);
     this.setState({filter});
-    return this;
+    // todos
+    this;
+    return console.log(nextProps);
   }
 
-  // console.log store.store.getState().todosRedux.todos
   render() {
     var c_Input, c_List, c_Title, c_div;
     ({c_div, c_Title, c_Input, c_List} = CFX);
@@ -74,8 +76,8 @@ StoryTodos = class StoryTodos extends Component {
         });
       }).bind(this)
     }), c_List({
-      data: store.store.getState().todosRedux.todos,
-      styleChange: (console.log(this.props), function(id, isCompleted) {
+      data: this.props.state.todos,
+      styleChange: (function(id, isCompleted) {
         if (isCompleted === true) {
           return {
             textDecorationLine: 'line-through'

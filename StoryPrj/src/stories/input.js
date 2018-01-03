@@ -35,21 +35,18 @@ export default function() {
   }).add('Todos', () => {
     var c_Todos;
     ({c_Todos} = CFX);
-    return c_Todos({
+    c_Todos({
       Packet: function(bool, data) {
-        var newTemp;
         console.log('hello');
         data = store.store.getState().todosRedux.todos;
-        newTemp = [];
-        return data.reduce((r, c, _index, array) => {
-          var temp;
-          if (c.isCompleted === bool) {
-            temp = JSON.parse(JSON.stringify(array));
-            newTemp.push(temp[_index]);
-          }
-          return newTemp;
-        }, null);
-      }
+        return data.reduce((r, c) => {
+          return [...r, ...(c.isCompleted === bool ? [c] : [])];
+        }, []);
+      },
+      data: store.store.getState().todosRedux.todos
+    });
+    return c_Todos({
+      Packet: function() {}
     });
   });
 };

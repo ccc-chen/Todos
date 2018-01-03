@@ -35,10 +35,17 @@ export default ->
       Packet: (bool, data) ->
         console.log 'hello'
         data = store.store.getState().todosRedux.todos   
-        newTemp = []
-        data.reduce (r, c, _index, array) =>
-          if c.isCompleted is bool
-            temp = JSON.parse JSON.stringify array
-            newTemp.push temp[_index]
-          newTemp
-        , null
+        data.reduce (r, c) =>
+          [
+            r...
+            (
+              if c.isCompleted is bool
+              then [ c ]
+              else []
+            )...
+          ]
+        , []
+      data: store.store.getState().todosRedux.todos
+
+    c_Todos
+      Packet: () ->
