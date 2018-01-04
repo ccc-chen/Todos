@@ -128,7 +128,7 @@ class list extends Component
               style:
                 styleComp c.id, c.isCompleted
               onChange: () -> onChange c.id, c.todo, c.isCompleted
-              defaultChecked: false
+              checked: c.isCompleted
             , c.todo
           ]
         , []

@@ -42,11 +42,11 @@ class StoryTodos extends Component
 
     Packet = (bool, data) ->
       console.log "hello"
-      a = data.reduce (r, c) =>
+      data.reduce (r, c) =>
         [
           r...
           (
-            if c.isCompleted is false
+            if c.isCompleted is bool
             then [ c ]
             else []
           )...
@@ -57,12 +57,11 @@ class StoryTodos extends Component
     c_div {}
     ,
       c_List
-
-        # data: @state.todos
         data:
           if @state.filter is 'active'
           then Packet false, @state.todos
           else if @state.filter is 'completed'
+          then Packet true , @state.todos
           else @state.todos
         styleChange: (
           (id, isCompleted) ->

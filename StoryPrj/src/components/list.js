@@ -52,16 +52,14 @@ StoryTodos = class StoryTodos extends Component {
     var Packet, c_List, c_div;
     ({c_div, c_List} = CFX);
     Packet = function(bool, data) {
-      var a;
       console.log("hello");
-      return a = data.reduce((r, c) => {
-        return [...r, ...(c.isCompleted === false ? [c] : [])];
+      return data.reduce((r, c) => {
+        return [...r, ...(c.isCompleted === bool ? [c] : [])];
       }, []);
     };
     dd(this.state.filter);
     return c_div({}, c_List({
-      // data: @state.todos
-      data: this.state.filter === 'active' ? Packet(false, this.state.todos) : this.state.filter === 'completed' ? void 0 : this.state.todos,
+      data: this.state.filter === 'active' ? Packet(false, this.state.todos) : this.state.filter === 'completed' ? Packet(true, this.state.todos) : this.state.todos,
       styleChange: (function(id, isCompleted) {
         if (isCompleted === true) {
           return {

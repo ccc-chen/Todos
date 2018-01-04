@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "main": "./dist/bundle.js",
   "devDependencies": {
-    "rollup-plugin-alias": "1.4.0",
     "antd-mobile": "2.1.1",
     "cfx.react-redux": "0.0.2",
     "cfx.require": "^0.0.1",
     "cfx.require-plugin-coffee": "^0.0.4",
     "ddeyes": "^0.0.4",
+    "rollup-plugin-alias": "1.4.0",
     "shelljs": "^0.7.8"
   },
   "scripts": {
@@ -17,22 +17,22 @@
     "rebuild": "make rebuild",
     "start": "make start",
     "rollup": "rollup -c"
-  },  
+  },
   "dependencies": {
     "@storybook/addon-info": "^3.2.17",
     "@storybook/addon-options": "^3.2.17",
     "@storybook/react": "^3.2.17",
     "cfx.dom": "^0.0.3",
-    "cfx.simple-build-tool": "0.0.3",
+    "cfx.react-redux": "^0.0.2",
     "cfx.redux": "^0.0.5",
     "cfx.redux-actions": "^0.0.1",
     "cfx.redux-saga": "^0.0.1",
     "cfx.redux-types": "^0.0.4",
-    "cfx.react-redux": "^0.0.2",
-    "react-redux": "5.0.6",
+    "cfx.simple-build-tool": "^0.0.3",
     "normalize.css": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "5.0.6",
     "reset-css": "^2.2.1"
   }
 }
