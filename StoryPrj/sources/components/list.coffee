@@ -1,8 +1,6 @@
 import { ddbs as dd } from 'ddeyes'
 import React, { Component } from 'react'
-import Input from '../../node_modules/StoryView/src/components/input'
 import List from '../../node_modules/StoryView/src/components/list'
-import Title from '../../node_modules/StoryView/src/components/title'
 import { prefixDom } from 'cfx.dom'
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
@@ -13,8 +11,6 @@ import { store } from 'ReduxServ'
 import { getState } from './components'
 
 CFX = prefixDom {
-  Title
-  Input
   List
   'div'
 }
@@ -23,52 +19,51 @@ class StoryTodos extends Component
   constructor: (props) ->
     super props
     @state = 
+      todos: props.state.todos
       filter: props.state.filter
-      # todos: props.state.Packets
     @
 
   componentWillReceiveProps: (nextProps) ->
     {
+      todos
       filter
-      # todos
     } = nextProps.state
     @setState {
+      todos
       filter
-      # todos
     }
     @
-    console.log nextProps
-  render: ->
 
+  render: ->
     {
       c_div
-      c_Title
-      c_Input
       c_List
     } = CFX
 
+    Packet = (bool, data) ->
+      console.log "hello"
+      a = data.reduce (r, c) =>
+        [
+          r...
+          (
+            if c.isCompleted is false
+            then [ c ]
+            else []
+          )...
+        ]
+      , []
+
+    dd @state.filter
     c_div {}
     ,
-      c_Title {}
-      c_Input
-        filter: @props.state.filter
-        selector: (
-          (filter) ->
-            @props.actions.filterSave
-              filter: filter
-            if filter is 'active'
-              @props.Packet false
-            else if filter is 'completed'
-              @props.Packet true
-        ).bind @
-
-        blur: (
-          (v) ->
-            @props.actions.create todo: v
-        ).bind @
-
       c_List
-        data: @props.state.todos
+
+        # data: @state.todos
+        data:
+          if @state.filter is 'active'
+          then Packet false, @state.todos
+          else if @state.filter is 'completed'
+          else @state.todos
         styleChange: (
           (id, isCompleted) ->
             textDecorationLine: 'line-through' if isCompleted is true
@@ -94,14 +89,12 @@ class StoryTodos extends Component
               id: key
               todo: todo
               isCompleted: !isCompleted
-        ). bind @
+        ).bind @
 
 mapStateToProps = (state) ->
   getState state.todosRedux
 
 mapActionToProps =
-  filterSave: actions.filterSave
-  create: actions.todosCreate
   removeOne: actions.todosRemoveOne
   patch: actions.todosPatch
   save: actions.todosSave

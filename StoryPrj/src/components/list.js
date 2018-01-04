@@ -9,11 +9,7 @@ import React, {
   Component
 } from 'react';
 
-import Input from '../../node_modules/StoryView/src/components/input';
-
 import List from '../../node_modules/StoryView/src/components/list';
-
-import Title from '../../node_modules/StoryView/src/components/title';
 
 import {
   prefixDom
@@ -33,50 +29,39 @@ import {
   getState
 } from './components';
 
-CFX = prefixDom({Title, Input, List, 'div': 'div'});
+CFX = prefixDom({List, 'div': 'div'});
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      todos: props.state.todos,
       filter: props.state.filter
     };
-    // todos: props.state.Packets
     this;
   }
 
   componentWillReceiveProps(nextProps) {
-    var filter;
-    // todos
-    ({filter} = nextProps.state);
-    this.setState({filter});
-    // todos
-    this;
-    return console.log(nextProps);
+    var filter, todos;
+    ({todos, filter} = nextProps.state);
+    this.setState({todos, filter});
+    return this;
   }
 
   render() {
-    var c_Input, c_List, c_Title, c_div;
-    ({c_div, c_Title, c_Input, c_List} = CFX);
-    return c_div({}, c_Title({}), c_Input({
-      filter: this.props.state.filter,
-      selector: (function(filter) {
-        this.props.actions.filterSave({
-          filter: filter
-        });
-        if (filter === 'active') {
-          return this.props.Packet(false);
-        } else if (filter === 'completed') {
-          return this.props.Packet(true);
-        }
-      }).bind(this),
-      blur: (function(v) {
-        return this.props.actions.create({
-          todo: v
-        });
-      }).bind(this)
-    }), c_List({
-      data: this.props.state.todos,
+    var Packet, c_List, c_div;
+    ({c_div, c_List} = CFX);
+    Packet = function(bool, data) {
+      var a;
+      console.log("hello");
+      return a = data.reduce((r, c) => {
+        return [...r, ...(c.isCompleted === false ? [c] : [])];
+      }, []);
+    };
+    dd(this.state.filter);
+    return c_div({}, c_List({
+      // data: @state.todos
+      data: this.state.filter === 'active' ? Packet(false, this.state.todos) : this.state.filter === 'completed' ? void 0 : this.state.todos,
       styleChange: (function(id, isCompleted) {
         if (isCompleted === true) {
           return {
@@ -113,8 +98,6 @@ mapStateToProps = function(state) {
 };
 
 mapActionToProps = {
-  filterSave: actions.filterSave,
-  create: actions.todosCreate,
   removeOne: actions.todosRemoveOne,
   patch: actions.todosPatch,
   save: actions.todosSave

@@ -5,6 +5,10 @@ import Welcome from './Welcome';
 
 import Input from './input';
 
+import List from './list';
+
 Welcome();
 
 Input();
+
+List();
