@@ -13,6 +13,8 @@ import 'antd-mobile/dist/antd-mobile.css';
 
 import List from '../components/list';
 
+import Input from '../components/input';
+
 import {
   Provider
 } from 'cfx.react-redux';
@@ -25,27 +27,26 @@ todosStore = store.store;
 
 ({actions} = store);
 
-console.log(store.actions);
-
-CFX = prefixDom({List, Provider});
+CFX = prefixDom({'div': 'div', Input, List, Provider});
 
 export default function() {
   return storiesOf('Todos', module).addDecorator(function(story) {
     var c_Provider;
-    // todosStore.dispatch store.actions.todosCreate
-    //   id: 1
-    //   todo: '123'
-    //   isCompleted: false
     ({c_Provider} = CFX);
     return c_Provider({
       store: todosStore
     }, story());
-  // .add 'Input'
+  }).add('Input', () => {
+    var c_Input;
+    ({c_Input} = CFX);
+    return c_Input({});
   }).add('List', () => {
     var c_List;
     ({c_List} = CFX);
     return c_List({});
+  }).add('App', () => {
+    var c_Input, c_List, c_div;
+    ({c_div, c_Input, c_List} = CFX);
+    return c_div({}, c_Input({}), c_List({}));
   });
 };
-
-// .add 'App'

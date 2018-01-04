@@ -63,7 +63,8 @@ StoryTodos = class StoryTodos extends Component {
       styleChange: (function(id, isCompleted) {
         if (isCompleted === true) {
           return {
-            textDecorationLine: 'line-through'
+            textDecorationLine: 'line-through',
+            opacity: 0.4
           };
         }
       }).bind(this),

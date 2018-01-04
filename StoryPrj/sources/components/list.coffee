@@ -65,7 +65,9 @@ class StoryTodos extends Component
           else @state.todos
         styleChange: (
           (id, isCompleted) ->
-            textDecorationLine: 'line-through' if isCompleted is true
+            if isCompleted is true
+              textDecorationLine: 'line-through'
+              opacity: 0.4  
         ).bind @
 
         Delete: (
