@@ -57,13 +57,22 @@ StoryTodos = class StoryTodos extends Component {
         return [...r, ...(c.isCompleted === bool ? [c] : [])];
       }, []);
     };
-    dd(this.state.filter);
     return c_div({}, c_List({
-      data: this.state.filter === 'active' ? Packet(false, this.state.todos) : this.state.filter === 'completed' ? Packet(true, this.state.todos) : this.state.todos,
+      data: (function() {
+        switch (this.state.filter) {
+          case 'active':
+            return Packet(false, this.state.todos);
+          case 'completed':
+            return Packet(true, this.state.todos);
+          case 'all':
+            return this.state.todos;
+        }
+      }).call(this),
       styleChange: (function(id, isCompleted) {
         if (isCompleted === true) {
           return {
-            textDecorationLine: 'line-through'
+            textDecorationLine: 'line-through',
+            opacity: 0.4
           };
         }
       }).bind(this),

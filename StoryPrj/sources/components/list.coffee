@@ -53,19 +53,20 @@ class StoryTodos extends Component
         ]
       , []
 
-    dd @state.filter
     c_div {}
     ,
       c_List
         data:
-          if @state.filter is 'active'
-          then Packet false, @state.todos
-          else if @state.filter is 'completed'
-          then Packet true , @state.todos
-          else @state.todos
+          switch @state.filter
+            when 'active' then Packet false,@state.todos
+            when 'completed' then Packet true,@state.todos
+            when 'all' then @state.todos
+        
         styleChange: (
           (id, isCompleted) ->
-            textDecorationLine: 'line-through' if isCompleted is true
+            if isCompleted is true
+              textDecorationLine: 'line-through' 
+              opacity: 0.4
         ).bind @
 
         Delete: (
