@@ -9,7 +9,13 @@ import React, {
   Component
 } from 'react';
 
-import Input from '../../node_modules/StoryView/src/components/input';
+import {
+  HotKeys
+} from 'react-hotkeys';
+
+import {
+  Input
+} from 'StoryView';
 
 import {
   prefixDom
@@ -29,12 +35,13 @@ import {
   getState
 } from './components';
 
-CFX = prefixDom({Input});
+CFX = prefixDom({Input, HotKeys});
 
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      todo: '',
       filter: props.state.filter
     };
     this;
@@ -48,22 +55,34 @@ StoryTodos = class StoryTodos extends Component {
   }
 
   render() {
-    var c_Input;
-    ({c_Input} = CFX);
-    return c_Input({
+    var c_HotKeys, c_Input;
+    ({c_Input, c_HotKeys} = CFX);
+    return c_HotKeys({
+      keyMap: {
+        submit: 'enter'
+      },
+      handlers: {
+        submit: (function() {
+          return this.props.actions.create({
+            todo: this.state.todo
+          });
+        // @setState Input: getInput
+        }).bind(this)
+      }
+    }, c_Input({
       filter: this.state.filter,
       selector: (function(filter) {
         return this.props.actions.filterSave({
           filter: filter
         });
       }).bind(this),
-      blur: (function(v) {
-        this.props.actions.create({
+      onChange: (function(v) {
+        return this.setState({
           todo: v
         });
-        return v = ' ';
-      }).bind(this)
-    });
+      }).bind(this),
+      value: this.state.todo
+    }));
   }
 
 };

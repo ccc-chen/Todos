@@ -19,16 +19,7 @@ CFX = prefixDom {
   InputItem
   List
 }
-
-class Input extends React.Component
-
-  constructor: (props) ->
-    super props
-
-    @state =
-      disalbe: false
-    @
-
+export default ->
   render: ->
 
     {
@@ -48,17 +39,8 @@ class Input extends React.Component
         console.log 'Pls use props selector.'
         console.log selector
 
-    blur =
-      if @props.blur?
-      then @props.blur
-      else (blur) =>
-        console.log 'Pls use props blur'
-
     onSelect = (opt) =>
       selector opt.props.value
-
-    onBlur = (v) =>
-      blur v
 
     selectStyl = (filter, itemValue) ->
       color: 'red' if filter is itemValue
@@ -99,13 +81,31 @@ class Input extends React.Component
               marginRight: '-15px'
               display: 'flex'
               alignItems: 'center'
-          ,
+
             c_Icon
               type: 'ellipsis'
 
-      c_InputItem
+      c_InputItem {
         placeholder: 'What needs to be done'
-        onBlur: onBlur
-        defaultValue: ''
-
-export default Input
+        (
+          if @props.onBlur
+          then onBlur: @props.onBlur
+          else {}
+        )...
+        (
+          if @props.onFocus
+          then onFocus: @props.onFocus
+          else {}
+        )...
+        (
+          if @props.onChange
+          then onChange: @props.onChange
+          else {}
+        )...
+        (
+          if @props.value
+          then value: @props.value
+          else {}
+        )...
+        clear: true
+      }

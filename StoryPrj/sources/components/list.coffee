@@ -1,6 +1,6 @@
 import { ddbs as dd } from 'ddeyes'
 import React, { Component } from 'react'
-import List from '../../node_modules/StoryView/src/components/list'
+import { List } from 'StoryView'
 import { prefixDom } from 'cfx.dom'
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'

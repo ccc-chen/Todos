@@ -9,7 +9,9 @@ import React, {
   Component
 } from 'react';
 
-import List from '../../node_modules/StoryView/src/components/list';
+import {
+  List
+} from 'StoryView';
 
 import {
   prefixDom

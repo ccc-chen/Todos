@@ -25,6 +25,6 @@ export default ->
       selector: (filter) ->
         console.log filter
       blur: (v) ->
-        console.log v          
-
-          
+        console.log v
+      focus: (v) ->
+        console.log v

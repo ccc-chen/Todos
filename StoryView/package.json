@@ -16,7 +16,8 @@
     "build": "make build",
     "rebuild": "make rebuild",
     "start": "make start",
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "postinstall": "npm run rollup"
   },
   "dependencies": {
     "@storybook/addon-info": "^3.2.17",
