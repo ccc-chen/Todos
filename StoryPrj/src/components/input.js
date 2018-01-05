@@ -44,8 +44,7 @@ StoryTodos = class StoryTodos extends Component {
     var filter;
     ({filter} = nextProps.state);
     this.setState({filter});
-    this;
-    return console.log(nextProps);
+    return this;
   }
 
   render() {
@@ -59,9 +58,10 @@ StoryTodos = class StoryTodos extends Component {
         });
       }).bind(this),
       blur: (function(v) {
-        return this.props.actions.create({
+        this.props.actions.create({
           todo: v
         });
+        return v = ' ';
       }).bind(this)
     });
   }

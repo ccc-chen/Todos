@@ -7,14 +7,6 @@ import {
   Popover
   InputItem
 } from 'antd-mobile'
-import { store } from 'ReduxServ'
-
-{
-  constants
-  actions
-  reducers
-  getStore
-} = store
 
 { Item } = Popover
 
@@ -62,14 +54,9 @@ class Input extends React.Component
       else (blur) =>
         console.log 'Pls use props blur'
 
-    # disable = false
-
     onSelect = (opt) =>
       selector opt.props.value
-      # if disable is false
-      # then true
-      # else false
-     
+
     onBlur = (v) =>
       blur v
 
@@ -119,6 +106,6 @@ class Input extends React.Component
       c_InputItem
         placeholder: 'What needs to be done'
         onBlur: onBlur
-        # clear: true
+        defaultValue: ''
 
 export default Input
