@@ -6,7 +6,7 @@ import { prefixDom } from 'cfx.dom'
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
 {
-  actions 
+  actions
   reducers
 } = store
 import { getState } from './components'
@@ -23,7 +23,7 @@ class StoryTodos extends Component
       todo: ''
       filter: props.state.filter
     @
-
+    console.log props
   componentWillReceiveProps: (nextProps) ->
     {
       filter
@@ -40,6 +40,23 @@ class StoryTodos extends Component
       c_HotKeys
     } = CFX
 
+    # keyMap =
+    #   clear: 'enter'
+    # handlers =
+    #   clear: (
+    #     -> @refs.RefInput.clearInput()
+    #   ).bind @
+
+    # c_HotKeys {
+    #   keyMap
+    #   handlers
+    # }
+    # ,
+    #   c_Input
+    #     clear: true
+    #     placeholder: '11'
+    #     ref: 'RefInput'
+    #     onChange: (v)-> dd v
     c_HotKeys
       keyMap:
         submit: 'enter'
@@ -62,7 +79,6 @@ class StoryTodos extends Component
         ).bind @
         value: @state.todo
 
-
 mapStateToProps = (state) ->
   getState state.todosRedux
 
@@ -74,5 +90,4 @@ export default connect(
   mapStateToProps
   mapActionToProps
   StoryTodos
-)  
-   
+)

@@ -45,6 +45,7 @@ StoryTodos = class StoryTodos extends Component {
       filter: props.state.filter
     };
     this;
+    console.log(props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,8 +56,24 @@ StoryTodos = class StoryTodos extends Component {
   }
 
   render() {
-    var c_HotKeys, c_Input;
+    var c_HotKeys, c_Input, handlers, keyMap;
     ({c_Input, c_HotKeys} = CFX);
+    keyMap = {
+      clear: 'enter'
+    };
+    handlers = {
+      clear: (function() {
+        return this.refs.RefInput.clearInput();
+      }).bind(this)
+    };
+    c_HotKeys({keyMap, handlers}, c_Input({
+      clear: true,
+      placeholder: '11',
+      ref: 'RefInput',
+      onChange: function(v) {
+        return dd(v);
+      }
+    }));
     return c_HotKeys({
       keyMap: {
         submit: 'enter'
