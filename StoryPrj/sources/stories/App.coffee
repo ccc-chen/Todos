@@ -2,14 +2,16 @@ import { storiesOf } from '@storybook/react'
 import { prefixDom } from 'cfx.dom'
 import 'antd-mobile/dist/antd-mobile.css'
 import List from '../components/list'
+import Input from '../components/input'
 import { Provider } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
-
 todosStore = store.store
 { actions } = store
-console.log store.actions
+
 
 CFX = prefixDom {
+  'div'
+  Input
   List
   Provider
 }
@@ -21,17 +23,19 @@ export default ->
 
   .addDecorator (story) ->
 
-    # todosStore.dispatch store.actions.todosCreate
-    #   id: 1
-    #   todo: '123'
-    #   isCompleted: false
-
     { c_Provider } = CFX
     c_Provider
       store: todosStore
     , story()
 
-  # .add 'Input'
+  .add 'Input'
+  , =>
+
+    {
+      c_Input
+    } = CFX
+
+    c_Input {}
 
   .add 'List'
   , =>
@@ -42,4 +46,16 @@ export default ->
 
     c_List {}
 
-  # .add 'App'
+  .add 'App'
+  , =>
+
+    {
+      c_div
+      c_Input
+      c_List
+    } = CFX
+
+    c_div {}
+    ,
+      c_Input {}
+      c_List {}

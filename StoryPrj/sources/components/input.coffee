@@ -20,7 +20,7 @@ class StoryTodos extends Component
     @state = 
       filter: props.state.filter
     @
-
+    
   componentWillReceiveProps: (nextProps) ->
     {
       filter
@@ -29,7 +29,6 @@ class StoryTodos extends Component
       filter
     }
     @
-    console.log nextProps
 
   render: ->
 
@@ -47,6 +46,12 @@ class StoryTodos extends Component
       blur: (
         (v) ->
           @props.actions.create todo: v
+      ).bind @
+
+      focus:(
+        (v) ->
+          console.log 'hello'
+          v: ' '
       ).bind @
 
 mapStateToProps = (state) ->

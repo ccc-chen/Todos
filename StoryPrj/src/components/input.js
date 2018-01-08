@@ -44,8 +44,7 @@ StoryTodos = class StoryTodos extends Component {
     var filter;
     ({filter} = nextProps.state);
     this.setState({filter});
-    this;
-    return console.log(nextProps);
+    return this;
   }
 
   render() {
@@ -62,6 +61,12 @@ StoryTodos = class StoryTodos extends Component {
         return this.props.actions.create({
           todo: v
         });
+      }).bind(this),
+      focus: (function(v) {
+        console.log('hello');
+        return {
+          v: ' '
+        };
       }).bind(this)
     });
   }

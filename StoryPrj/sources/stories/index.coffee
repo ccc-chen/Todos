@@ -3,10 +3,8 @@
 
 import Welcome from './Welcome'
 
-import Input from './input'
-
-import List from './list'
+import App from './App'
 
 Welcome()
-Input()
-List()
+
+App()
