@@ -7,7 +7,6 @@ CFX = prefixDom {
   Input
 }
 
-
 export default ->
 
   storiesOf 'Todos', module

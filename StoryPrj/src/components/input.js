@@ -29,6 +29,12 @@ import {
   store
 } from 'ReduxServ';
 
+import {
+  services
+} from 'todosRedux';
+
+dd(services);
+
 ({actions, reducers} = store);
 
 import {
@@ -66,12 +72,6 @@ StoryTodos = class StoryTodos extends Component {
       }).bind(this)
     };
     c_HotKeys({keyMap, handlers});
-    // ,
-    //   c_Input
-    //     clear: true
-    //     placeholder: '11'
-    //     ref: 'RefInput'
-    //     onChange: (v)-> dd v
     return c_HotKeys({
       keyMap: {
         submit: 'enter'
@@ -81,8 +81,8 @@ StoryTodos = class StoryTodos extends Component {
           this.props.actions.create({
             todo: this.state.todo
           });
-          // dd @refs.RefInput.refs
-          return this.refs.RefInput.refs.RefInput.clearInput();
+          this.refs.RefInput.refs.RefInput.clearInput();
+          return dd(this.refs);
         }).bind(this)
       }
     }, c_Input({

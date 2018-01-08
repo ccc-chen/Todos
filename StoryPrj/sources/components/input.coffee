@@ -5,6 +5,8 @@ import { Input } from 'StoryView'
 import { prefixDom } from 'cfx.dom'
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
+import { services } from 'todosRedux'
+
 {
   actions
   reducers
@@ -52,20 +54,14 @@ class StoryTodos extends Component
       handlers
     }
 
-    # ,
-    #   c_Input
-    #     clear: true
-    #     placeholder: '11'
-    #     ref: 'RefInput'
-    #     onChange: (v)-> dd v
     c_HotKeys
       keyMap:
         submit: 'enter'
       handlers:
         submit: ( ->
           @props.actions.create todo: @state.todo
-          # dd @refs.RefInput.refs
           @refs.RefInput.refs.RefInput.clearInput()
+          dd @refs
         ).bind @
     ,
       c_Input
