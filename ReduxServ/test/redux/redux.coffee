@@ -1,7 +1,9 @@
 import dd from 'ddeyes'
 import 'shelljs/make'
 
-import { store } from '../../src'
+import { 
+  store
+} from '../../src'
 
 {
   constants
@@ -17,6 +19,9 @@ import { store } from '../../src'
 #   dispatch
 # ) ->
   # dd @getState()
+
+target.all = ->
+  dd store
 
 target.static = ->
   dd {

@@ -5,11 +5,11 @@ import { Input } from 'StoryView'
 import { prefixDom } from 'cfx.dom'
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
-import { services } from 'todosRedux'
 
 {
   actions
-  reducers
+  # reducers
+  sagas
 } = store
 import { getState } from './components'
 
@@ -19,13 +19,14 @@ CFX = prefixDom {
 }
 
 class StoryTodos extends Component
+
   constructor: (props) ->
     super props
     @state =
       todo: ''
       filter: props.state.filter
     @
-
+    dd actions
   componentWillReceiveProps: (nextProps) ->
     {
       filter
