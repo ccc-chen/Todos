@@ -45,7 +45,6 @@ StoryTodos = class StoryTodos extends Component {
       filter: props.state.filter
     };
     this;
-    console.log(props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -66,14 +65,13 @@ StoryTodos = class StoryTodos extends Component {
         return this.refs.RefInput.clearInput();
       }).bind(this)
     };
-    c_HotKeys({keyMap, handlers}, c_Input({
-      clear: true,
-      placeholder: '11',
-      ref: 'RefInput',
-      onChange: function(v) {
-        return dd(v);
-      }
-    }));
+    c_HotKeys({keyMap, handlers});
+    // ,
+    //   c_Input
+    //     clear: true
+    //     placeholder: '11'
+    //     ref: 'RefInput'
+    //     onChange: (v)-> dd v
     return c_HotKeys({
       keyMap: {
         submit: 'enter'
@@ -87,6 +85,7 @@ StoryTodos = class StoryTodos extends Component {
         }).bind(this)
       }
     }, c_Input({
+      ref: 'RefInput',
       filter: this.state.filter,
       selector: (function(filter) {
         return this.props.actions.filterSave({

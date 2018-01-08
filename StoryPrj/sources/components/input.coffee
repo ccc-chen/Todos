@@ -23,7 +23,7 @@ class StoryTodos extends Component
       todo: ''
       filter: props.state.filter
     @
-    console.log props
+
   componentWillReceiveProps: (nextProps) ->
     {
       filter
@@ -40,17 +40,18 @@ class StoryTodos extends Component
       c_HotKeys
     } = CFX
 
-    # keyMap =
-    #   clear: 'enter'
-    # handlers =
-    #   clear: (
-    #     -> @refs.RefInput.clearInput()
-    #   ).bind @
+    keyMap =
+      clear: 'enter'
+    handlers =
+      clear: (
+        -> @refs.RefInput.clearInput()
+      ).bind @
 
-    # c_HotKeys {
-    #   keyMap
-    #   handlers
-    # }
+    c_HotKeys {
+      keyMap
+      handlers
+    }
+
     # ,
     #   c_Input
     #     clear: true
@@ -67,6 +68,7 @@ class StoryTodos extends Component
         ).bind @
     ,
       c_Input
+        ref: 'RefInput'      
         filter: @state.filter
         selector: (
           (filter) ->
