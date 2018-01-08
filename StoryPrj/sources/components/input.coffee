@@ -64,11 +64,12 @@ class StoryTodos extends Component
       handlers:
         submit: ( ->
           @props.actions.create todo: @state.todo
-          # @setState Input: getInput
+          # dd @refs.RefInput.refs
+          @refs.RefInput.refs.RefInput.clearInput()
         ).bind @
     ,
       c_Input
-        ref: 'RefInput'      
+        ref: 'RefInput'
         filter: @state.filter
         selector: (
           (filter) ->

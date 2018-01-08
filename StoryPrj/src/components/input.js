@@ -78,10 +78,11 @@ StoryTodos = class StoryTodos extends Component {
       },
       handlers: {
         submit: (function() {
-          return this.props.actions.create({
+          this.props.actions.create({
             todo: this.state.todo
           });
-        // @setState Input: getInput
+          // dd @refs.RefInput.refs
+          return this.refs.RefInput.refs.RefInput.clearInput();
         }).bind(this)
       }
     }, c_Input({

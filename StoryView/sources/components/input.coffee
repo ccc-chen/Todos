@@ -1,5 +1,6 @@
-import { prefixDom } from 'cfx.dom'
 import React, { Component } from 'react'
+import { prefixDom } from 'cfx.dom'
+
 import {
   List
   Icon
@@ -19,7 +20,9 @@ CFX = prefixDom {
   InputItem
   List
 }
+
 export default ->
+
   render: ->
 
     {
@@ -86,6 +89,7 @@ export default ->
               type: 'ellipsis'
 
       c_InputItem {
+        ref: 'RefInput'
         placeholder: 'What needs to be done'
         (
           if @props.onBlur
