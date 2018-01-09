@@ -4,11 +4,15 @@ import { HotKeys } from 'react-hotkeys'
 import { Input } from 'StoryView'
 import { prefixDom } from 'cfx.dom'
 import { connect } from 'cfx.react-redux'
-import { store } from 'ReduxServ'
-
+import {
+  store
+  services
+  toolFunc
+} from 'ReduxServ'
+dd services
 {
   actions
-  # reducers
+  reducers
   sagas
 } = store
 import { getState } from './components'
@@ -26,7 +30,7 @@ class StoryTodos extends Component
       todo: ''
       filter: props.state.filter
     @
-    dd actions
+    dd props
   componentWillReceiveProps: (nextProps) ->
     {
       filter
@@ -60,7 +64,13 @@ class StoryTodos extends Component
         submit: 'enter'
       handlers:
         submit: ( ->
-          @props.actions.create todo: @state.todo
+          # @props.actions.create todo: @state.todo
+          @props.actions.create(toolFunc,{
+            nickname: 'chenhuan'
+            password: '111'
+          }).then((result)=> {
+            result
+          })
           @refs.RefInput.refs.RefInput.clearInput()
           dd @refs
         ).bind @
@@ -84,7 +94,8 @@ mapStateToProps = (state) ->
 
 mapActionToProps =
   filterSave: actions.filterSave
-  create: actions.todosCreate
+  # create: actions.todosCreate
+  create: services.lc.create
 
 export default connect(
   mapStateToProps
