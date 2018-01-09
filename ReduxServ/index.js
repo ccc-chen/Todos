@@ -1,5 +1,4 @@
 export {
   models,
-  store,
-  services
+  store
 } from 'src';

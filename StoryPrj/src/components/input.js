@@ -26,12 +26,8 @@ import {
 } from 'cfx.react-redux';
 
 import {
-  store,
-  services,
-  toolFunc
+  store
 } from 'ReduxServ';
-
-dd(services);
 
 ({actions, reducers, sagas} = store);
 
@@ -77,12 +73,8 @@ StoryTodos = class StoryTodos extends Component {
       },
       handlers: {
         submit: (function() {
-          // @props.actions.create todo: @state.todo
-          this.props.actions.create(toolFunc, {
-            nickname: 'chenhuan',
-            password: '111'
-          }).then((result) => {
-            return {result};
+          this.props.actions.create({
+            todo: this.state.todo
           });
           this.refs.RefInput.refs.RefInput.clearInput();
           return dd(this.refs);
@@ -113,8 +105,7 @@ mapStateToProps = function(state) {
 
 mapActionToProps = {
   filterSave: actions.filterSave,
-  // create: actions.todosCreate
-  create: services.lc.create
+  create: actions.todosCreate
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);
