@@ -8,7 +8,7 @@ import { store } from 'ReduxServ'
 {
   actions
   reducers
-  sagas
+  # sagas
 } = store
 import { getState } from './components'
 
@@ -41,18 +41,6 @@ class StoryTodos extends Component
       c_Input
       c_HotKeys
     } = CFX
-
-    keyMap =
-      clear: 'enter'
-    handlers =
-      clear: (
-        -> @refs.RefInput.clearInput()
-      ).bind @
-
-    c_HotKeys {
-      keyMap
-      handlers
-    }
 
     c_HotKeys
       keyMap:

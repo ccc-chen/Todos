@@ -97,7 +97,7 @@ mapStateToProps = (state) ->
 
 mapActionToProps =
   removeOne: actions.todosRemoveOne
-  patch: actions.todosPatch
+  patch: actions.todosPatchOne
   save: actions.todosSave
 
 export default connect(

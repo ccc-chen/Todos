@@ -20,10 +20,10 @@ export default ->
     } = CFX
 
     c_Input
-      filter: 'active'
+      filter: 'all'
       selector: (filter) ->
         console.log filter
-      blur: (v) ->
+      onBlur: (v) ->
         console.log v
       focus: (v) ->
         console.log v

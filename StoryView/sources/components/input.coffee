@@ -56,7 +56,6 @@ export default ->
           onSelect: onSelect
           overlayStyle:
             color: 'currentColor'
-          # visible: onSelect
 
           overlay: [
             c_Item
@@ -75,7 +74,6 @@ export default ->
               style: selectStyl @props.filter, 'all'
             , 'All'
           ]
-          # onVisibleChange: onVisibleChange
         ,
           c_div
             style:
