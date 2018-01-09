@@ -59,17 +59,6 @@ StoryTodos = class StoryTodos extends Component {
   render() {
     var c_HotKeys, c_Input;
     ({c_Input, c_HotKeys} = CFX);
-    // keyMap =
-    //   clear: 'enter'
-    // handlers =
-    //   clear: (
-    //     -> @refs.RefInput.clearInput()
-    //   ).bind @
-
-    // c_HotKeys {
-    //   keyMap
-    //   handlers
-    // }
     return c_HotKeys({
       keyMap: {
         submit: 'enter'
@@ -95,13 +84,13 @@ StoryTodos = class StoryTodos extends Component {
         return this.setState({
           todo: v
         });
-      }).bind(this),
-      value: this.state.todo
+      }).bind(this)
     }));
   }
 
 };
 
+// value: @state.todo
 mapStateToProps = function(state) {
   return getState(state.todosRedux);
 };

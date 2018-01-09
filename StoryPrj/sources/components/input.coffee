@@ -64,7 +64,7 @@ class StoryTodos extends Component
           (v) ->
             @setState todo: v
         ).bind @
-        value: @state.todo
+        # value: @state.todo
 
 mapStateToProps = (state) ->
   getState state.todosRedux

@@ -41,7 +41,6 @@ class StoryTodos extends Component
     } = CFX
 
     Packet = (bool, data) ->
-      console.log "hello"
       data.reduce (r, c) =>
         [
           r...
@@ -53,7 +52,6 @@ class StoryTodos extends Component
         ]
       , []
 
-    dd @state.filter
     c_div {}
     ,
       c_List
@@ -67,7 +65,8 @@ class StoryTodos extends Component
           (id, isCompleted) ->
             if isCompleted is true
               textDecorationLine: 'line-through'
-              opacity: 0.4  
+              opacity: 0.4
+
         ).bind @
 
         Delete: (
@@ -76,20 +75,22 @@ class StoryTodos extends Component
               id: key
         ).bind @
 
-        Patch: (
-          (key, value) ->
-            @props.actions.patch
-              id: key
-              todo: value
-              isCompleted: false
-        ).bind @
-
         hasClick: (
           (key, todo, isCompleted) ->
+            console.log '1', isCompleted
             @props.actions.patch
               id: key
               todo: todo
               isCompleted: !isCompleted
+        ).bind @
+
+        Patch: (
+          (key, value, isCompleted) ->
+            console.log '2', isCompleted          
+            @props.actions.patch
+              id: key
+              todo: value
+              isCompleted: isCompleted
         ).bind @
 
 mapStateToProps = (state) ->

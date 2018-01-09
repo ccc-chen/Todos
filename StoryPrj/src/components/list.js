@@ -54,12 +54,10 @@ StoryTodos = class StoryTodos extends Component {
     var Packet, c_List, c_div;
     ({c_div, c_List} = CFX);
     Packet = function(bool, data) {
-      console.log("hello");
       return data.reduce((r, c) => {
         return [...r, ...(c.isCompleted === bool ? [c] : [])];
       }, []);
     };
-    dd(this.state.filter);
     return c_div({}, c_List({
       data: this.state.filter === 'active' ? Packet(false, this.state.todos) : this.state.filter === 'completed' ? Packet(true, this.state.todos) : this.state.todos,
       styleChange: (function(id, isCompleted) {
@@ -75,18 +73,20 @@ StoryTodos = class StoryTodos extends Component {
           id: key
         });
       }).bind(this),
-      Patch: (function(key, value) {
-        return this.props.actions.patch({
-          id: key,
-          todo: value,
-          isCompleted: false
-        });
-      }).bind(this),
       hasClick: (function(key, todo, isCompleted) {
+        console.log('1', isCompleted);
         return this.props.actions.patch({
           id: key,
           todo: todo,
           isCompleted: !isCompleted
+        });
+      }).bind(this),
+      Patch: (function(key, value, isCompleted) {
+        console.log('2', isCompleted);
+        return this.props.actions.patch({
+          id: key,
+          todo: value,
+          isCompleted: isCompleted
         });
       }).bind(this)
     }));
