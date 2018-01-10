@@ -65,10 +65,15 @@ StoryTodos = class StoryTodos extends Component {
       },
       handlers: {
         submit: (function() {
-          this.props.actions.save({
+          this.props.actions.create({
             todo: this.state.todo
           });
-          return this.refs.RefInput.refs.RefInput.clearInput();
+          // console.log @state.todo
+          // @props.actions.create({todo: @state.todo}).then((result) =>{
+          //   console.log(result)
+          // })
+          this.refs.RefInput.refs.RefInput.clearInput();
+          return console.log(this.props);
         }).bind(this)
       }
     }, c_Input({
@@ -89,14 +94,14 @@ StoryTodos = class StoryTodos extends Component {
 
 };
 
-// value: @state.todo
 mapStateToProps = function(state) {
   return getState(state.todosRedux);
 };
 
 mapActionToProps = {
   filterSave: actions.filterSave,
-  save: actions.todoSave
+  // save: actions.todoSave
+  create: actions.todoCreate
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

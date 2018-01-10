@@ -97,7 +97,8 @@ mapStateToProps = (state) ->
   getState state.todosRedux
 
 mapActionToProps =
-  removeOne: actions.todoRemove
+  # removeOne: actions.todoRemove
+  removeOne: actions.todoDelete
   patch: actions.todoPatch
 
 export default connect(

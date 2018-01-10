@@ -99,7 +99,8 @@ mapStateToProps = function(state) {
 };
 
 mapActionToProps = {
-  removeOne: actions.todoRemove,
+  // removeOne: actions.todoRemove
+  removeOne: actions.todoDelete,
   patch: actions.todoPatch
 };
 

@@ -47,8 +47,13 @@ class StoryTodos extends Component
         submit: 'enter'
       handlers:
         submit: ( ->
-          @props.actions.save todo: @state.todo
+          @props.actions.create todo: @state.todo
+          # console.log @state.todo
+          # @props.actions.create({todo: @state.todo}).then((result) =>{
+          #   console.log(result)
+          # })
           @refs.RefInput.refs.RefInput.clearInput()
+          console.log @props
         ).bind @
     ,
       c_Input
@@ -63,14 +68,14 @@ class StoryTodos extends Component
           (v) ->
             @setState todo: v
         ).bind @
-        # value: @state.todo
 
 mapStateToProps = (state) ->
   getState state.todosRedux
 
 mapActionToProps =
   filterSave: actions.filterSave
-  save: actions.todoSave
+  # save: actions.todoSave
+  create: actions.todoCreate
 
 export default connect(
   mapStateToProps
