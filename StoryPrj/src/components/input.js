@@ -37,8 +37,6 @@ import {
 
 CFX = prefixDom({Input, HotKeys});
 
-console.log(actions);
-
 StoryTodos = class StoryTodos extends Component {
   constructor(props) {
     super(props);
@@ -68,12 +66,7 @@ StoryTodos = class StoryTodos extends Component {
           this.props.actions.create({
             todo: this.state.todo
           });
-          // console.log @state.todo
-          // @props.actions.create({todo: @state.todo}).then((result) =>{
-          //   console.log(result)
-          // })
-          this.refs.RefInput.refs.RefInput.clearInput();
-          return console.log(this.props);
+          return this.refs.RefInput.refs.RefInput.clearInput();
         }).bind(this)
       }
     }, c_Input({
@@ -100,7 +93,6 @@ mapStateToProps = function(state) {
 
 mapActionToProps = {
   filterSave: actions.filterSave,
-  // save: actions.todoSave
   create: actions.todoCreate
 };
 

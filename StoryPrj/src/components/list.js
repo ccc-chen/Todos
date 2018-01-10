@@ -43,9 +43,11 @@ StoryTodos = class StoryTodos extends Component {
     this;
   }
 
-  // componentWillMount: ->
-  //   @props.actions.fetchAll()
-  //   @
+  componentWillMount() {
+    this.props.actions.fetchAll();
+    return this;
+  }
+
   componentWillReceiveProps(nextProps) {
     var filter, todos;
     ({todos, filter} = nextProps.state);
@@ -72,12 +74,11 @@ StoryTodos = class StoryTodos extends Component {
         }
       }).bind(this),
       Delete: (function(key) {
-        return this.props.actions.removeOne({
+        return this.props.actions.deleteOne({
           objectId: key
         });
       }).bind(this),
       hasClick: (function(key, todo, isCompleted) {
-        console.log(key, todo, isCompleted);
         return this.props.actions.update({
           objectId: key,
           todo: todo,
@@ -85,7 +86,6 @@ StoryTodos = class StoryTodos extends Component {
         });
       }).bind(this),
       Patch: (function(key, value, isCompleted) {
-        console.log('2', isCompleted);
         return this.props.actions.update({
           objectId: key,
           todo: value,
@@ -98,13 +98,11 @@ StoryTodos = class StoryTodos extends Component {
 };
 
 mapStateToProps = function(state) {
-  // console.log state.todosRedux
   return getState(state.todosRedux);
 };
 
 mapActionToProps = {
-  // removeOne: actions.todoRemove
-  removeOne: actions.todoDelete,
+  deleteOne: actions.todoDelete,
   update: actions.todoUpdate,
   fetchAll: actions.todoFetchAll
 };

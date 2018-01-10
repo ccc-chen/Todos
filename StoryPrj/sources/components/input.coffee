@@ -16,7 +16,7 @@ CFX = prefixDom {
   Input
   HotKeys
 }
-console.log actions
+
 class StoryTodos extends Component
 
   constructor: (props) ->
@@ -48,12 +48,7 @@ class StoryTodos extends Component
       handlers:
         submit: ( ->
           @props.actions.create todo: @state.todo
-          # console.log @state.todo
-          # @props.actions.create({todo: @state.todo}).then((result) =>{
-          #   console.log(result)
-          # })
           @refs.RefInput.refs.RefInput.clearInput()
-          console.log @props
         ).bind @
     ,
       c_Input
@@ -74,8 +69,8 @@ mapStateToProps = (state) ->
 
 mapActionToProps =
   filterSave: actions.filterSave
-  # save: actions.todoSave
   create: actions.todoCreate
+  
 
 export default connect(
   mapStateToProps
