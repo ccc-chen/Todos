@@ -60,7 +60,7 @@ StoryTodos = class StoryTodos extends Component {
     };
     return c_div({}, c_List({
       data: this.state.filter === 'active' ? Packet(false, this.state.todos) : this.state.filter === 'completed' ? Packet(true, this.state.todos) : this.state.todos,
-      styleChange: (function(id, isCompleted) {
+      styleChange: (function(objectId, isCompleted) {
         if (isCompleted === true) {
           return {
             textDecorationLine: 'line-through',
@@ -70,21 +70,21 @@ StoryTodos = class StoryTodos extends Component {
       }).bind(this),
       Delete: (function(key) {
         return this.props.actions.removeOne({
-          id: key
+          objectId: key
         });
       }).bind(this),
       hasClick: (function(key, todo, isCompleted) {
-        console.log('1', isCompleted);
+        console.log(key, todo, isCompleted);
         return this.props.actions.patch({
-          id: key,
+          objectId: key,
           todo: todo,
           isCompleted: !isCompleted
         });
       }).bind(this),
       Patch: (function(key, value, isCompleted) {
-        console.log('2', isCompleted);
+        // console.log '2', isCompleted
         return this.props.actions.patch({
-          id: key,
+          objectId: key,
           todo: value,
           isCompleted: isCompleted
         });
@@ -99,9 +99,9 @@ mapStateToProps = function(state) {
 };
 
 mapActionToProps = {
-  removeOne: actions.todosRemoveOne,
-  patch: actions.todosPatchOne,
-  save: actions.todosSave
+  removeOne: actions.todoRemove,
+  patch: actions.todoPatch,
+  save: actions.todoUpdate
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

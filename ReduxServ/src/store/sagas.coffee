@@ -1,7 +1,7 @@
-# import { store } from 'todosRedux'
+import { store } from 'todosRedux'
 
-# sagas = [
-#   store.sagas...
-# ]
+sagas = [
+  store.sagas...
+]
 
-# export default sagas
+export default sagas

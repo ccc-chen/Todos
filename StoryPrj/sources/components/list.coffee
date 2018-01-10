@@ -62,7 +62,7 @@ class StoryTodos extends Component
           then Packet true , @state.todos
           else @state.todos
         styleChange: (
-          (id, isCompleted) ->
+          (objectId, isCompleted) ->
             if isCompleted is true
               textDecorationLine: 'line-through'
               opacity: 0.4
@@ -72,23 +72,23 @@ class StoryTodos extends Component
         Delete: (
           (key) ->
             @props.actions.removeOne
-              id: key
+              objectId: key
         ).bind @
 
         hasClick: (
           (key, todo, isCompleted) ->
-            console.log '1', isCompleted
+            console.log key, todo, isCompleted
             @props.actions.patch
-              id: key
+              objectId: key
               todo: todo
               isCompleted: !isCompleted
         ).bind @
 
         Patch: (
           (key, value, isCompleted) ->
-            console.log '2', isCompleted          
+            # console.log '2', isCompleted
             @props.actions.patch
-              id: key
+              objectId: key
               todo: value
               isCompleted: isCompleted
         ).bind @
@@ -97,9 +97,9 @@ mapStateToProps = (state) ->
   getState state.todosRedux
 
 mapActionToProps =
-  removeOne: actions.todosRemoveOne
-  patch: actions.todosPatchOne
-  save: actions.todosSave
+  removeOne: actions.todoRemove
+  patch: actions.todoPatch
+  save: actions.todoUpdate
 
 export default connect(
   mapStateToProps

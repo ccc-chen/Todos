@@ -8,7 +8,7 @@ import { store } from 'ReduxServ'
 {
   actions
   reducers
-  # sagas
+  sagas
 } = store
 import { getState } from './components'
 
@@ -16,7 +16,7 @@ CFX = prefixDom {
   Input
   HotKeys
 }
-
+console.log actions
 class StoryTodos extends Component
 
   constructor: (props) ->
@@ -25,7 +25,7 @@ class StoryTodos extends Component
       todo: ''
       filter: props.state.filter
     @
-    dd props
+
   componentWillReceiveProps: (nextProps) ->
     {
       filter
@@ -49,7 +49,6 @@ class StoryTodos extends Component
         submit: ( ->
           @props.actions.create todo: @state.todo
           @refs.RefInput.refs.RefInput.clearInput()
-          dd @refs
         ).bind @
     ,
       c_Input
@@ -71,7 +70,7 @@ mapStateToProps = (state) ->
 
 mapActionToProps =
   filterSave: actions.filterSave
-  create: actions.todosCreate
+  create: actions.todoSave
 
 export default connect(
   mapStateToProps

@@ -43,7 +43,7 @@ target.reducers = ->
 
   # myStore.dispatch actions.todosCreateOne
   #   todo:
-  #     id: 1
+  #     objectId: 1
   #     company: '武汉举手帮租有限公司'
   #     main: '旅游、租房'
   #     location: '武汉'

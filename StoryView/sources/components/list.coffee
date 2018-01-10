@@ -59,19 +59,19 @@ class list extends Component
         console.log 'pls run styleChange function!'
         console.log styleChange       
         
-    onChange = (id, todo, isCompleted) ->
-      hasClick id, todo, isCompleted
-      styleComp id,isCompleted
+    onChange = (objectId, todo, isCompleted) ->
+      hasClick objectId, todo, isCompleted
+      styleComp objectId, isCompleted
 
-    DeletePress = (id) ->
-      Delete id
+    DeletePress = (objectId) ->
+      Delete objectId
 
-    PatchPress = (id, todo) ->
-      Patch id, todo   
+    PatchPress = (objectId, todo) ->
+      Patch objectId, todo   
 
       
-    onPressEdit = (id, todo) ->
-      console.log id, todo
+    onPressEdit = (objectId, todo) ->
+      console.log objectId, todo
       prompt(
         'defaultValue'
         'defaultValue for prompt'
@@ -79,13 +79,13 @@ class list extends Component
             text: 'Cancel'
           ,
             text: 'Submit'
-            onPress: (value) => PatchPress(id, value)
+            onPress: (value) => PatchPress(objectId, value)
         ]
         'default'
       todo)
     
-    onPressDelete = (id) ->
-      console.log '删除的id是:', id
+    onPressDelete = (objectId) ->
+      console.log '删除的id是:', objectId
       alert(
         'Delete'
         'Are you sure???'
@@ -94,12 +94,12 @@ class list extends Component
           onPress: () => console.log 'cancel'
         ,  
           text: 'Ok'
-          onPress:() => DeletePress id
+          onPress:() => DeletePress objectId
         ]
       )
 
-    styleComp = (id,isCompleted) ->
-      styleChange id, isCompleted
+    styleComp = (objectId, isCompleted) ->
+      styleChange objectId, isCompleted
 
     c_List.apply @, [
       renderHeader: ' '
@@ -111,29 +111,28 @@ class list extends Component
             c_SwipeAction
               right: [
                 text: '编辑'
-                onPress: () -> onPressEdit c.id, c.todo
+                onPress: () -> onPressEdit c.objectId, c.todo
                 style:
                   background: '#ddd'
                   color: 'white'
               ,
                 text: '删除'
-                onPress: () -> onPressDelete c.id
+                onPress: () -> onPressDelete c.objectId
                 style:
                   background: '#F4333C'
                   color: 'white'
               ]
             ,
             c_CheckboxItem
-              id: c.id
+              objectid: c.objectId
               style:
-                styleComp c.id, c.isCompleted
-              onChange: () -> onChange c.id, c.todo, c.isCompleted
+                styleComp c.objectId, c.isCompleted
+              onChange: () -> onChange c.objectId, c.todo, c.isCompleted
               checked: c.isCompleted
             , c.todo
           ]
         , []
       )...
     ]
-
 
 export default list

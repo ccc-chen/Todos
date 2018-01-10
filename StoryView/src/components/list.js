@@ -43,18 +43,18 @@ list = class list extends Component {
       console.log('pls run styleChange function!');
       return console.log(styleChange);
     };
-    onChange = function(id, todo, isCompleted) {
-      hasClick(id, todo, isCompleted);
-      return styleComp(id, isCompleted);
+    onChange = function(objectId, todo, isCompleted) {
+      hasClick(objectId, todo, isCompleted);
+      return styleComp(objectId, isCompleted);
     };
-    DeletePress = function(id) {
-      return Delete(id);
+    DeletePress = function(objectId) {
+      return Delete(objectId);
     };
-    PatchPress = function(id, todo) {
-      return Patch(id, todo);
+    PatchPress = function(objectId, todo) {
+      return Patch(objectId, todo);
     };
-    onPressEdit = function(id, todo) {
-      console.log(id, todo);
+    onPressEdit = function(objectId, todo) {
+      console.log(objectId, todo);
       return prompt('defaultValue', 'defaultValue for prompt', [
         {
           text: 'Cancel'
@@ -62,14 +62,14 @@ list = class list extends Component {
         {
           text: 'Submit',
           onPress: (value) => {
-            return PatchPress(id,
+            return PatchPress(objectId,
         value);
           }
         }
       ], 'default', todo);
     };
-    onPressDelete = function(id) {
-      console.log('删除的id是:', id);
+    onPressDelete = function(objectId) {
+      console.log('删除的id是:', objectId);
       return alert('Delete', 'Are you sure???', [
         {
           text: 'Cancel',
@@ -80,13 +80,13 @@ list = class list extends Component {
         {
           text: 'Ok',
           onPress: () => {
-            return DeletePress(id);
+            return DeletePress(objectId);
           }
         }
       ]);
     };
-    styleComp = function(id, isCompleted) {
-      return styleChange(id, isCompleted);
+    styleComp = function(objectId, isCompleted) {
+      return styleChange(objectId, isCompleted);
     };
     return c_List.apply(this, [
       {
@@ -102,7 +102,7 @@ list = class list extends Component {
               {
                 text: '编辑',
                 onPress: function() {
-                  return onPressEdit(c.id,
+                  return onPressEdit(c.objectId,
               c.todo);
                 },
                 style: {
@@ -113,7 +113,7 @@ list = class list extends Component {
               {
                 text: '删除',
                 onPress: function() {
-                  return onPressDelete(c.id);
+                  return onPressDelete(c.objectId);
                 },
                 style: {
                   background: '#F4333C',
@@ -123,11 +123,11 @@ list = class list extends Component {
             ]
           },
           c_CheckboxItem({
-            id: c.id,
-            style: styleComp(c.id,
+            objectId: c.objectId,
+            style: styleComp(c.objectId,
           c.isCompleted),
             onChange: function() {
-              return onChange(c.id,
+              return onChange(c.objectId,
           c.todo,
           c.isCompleted);
             },
