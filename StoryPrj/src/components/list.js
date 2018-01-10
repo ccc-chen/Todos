@@ -43,6 +43,9 @@ StoryTodos = class StoryTodos extends Component {
     this;
   }
 
+  // componentWillMount: ->
+  //   @props.actions.fetchAll()
+  //   @
   componentWillReceiveProps(nextProps) {
     var filter, todos;
     ({todos, filter} = nextProps.state);
@@ -75,7 +78,7 @@ StoryTodos = class StoryTodos extends Component {
       }).bind(this),
       hasClick: (function(key, todo, isCompleted) {
         console.log(key, todo, isCompleted);
-        return this.props.actions.patch({
+        return this.props.actions.update({
           objectId: key,
           todo: todo,
           isCompleted: !isCompleted
@@ -83,7 +86,7 @@ StoryTodos = class StoryTodos extends Component {
       }).bind(this),
       Patch: (function(key, value, isCompleted) {
         console.log('2', isCompleted);
-        return this.props.actions.patch({
+        return this.props.actions.update({
           objectId: key,
           todo: value,
           isCompleted: isCompleted
@@ -95,13 +98,15 @@ StoryTodos = class StoryTodos extends Component {
 };
 
 mapStateToProps = function(state) {
+  // console.log state.todosRedux
   return getState(state.todosRedux);
 };
 
 mapActionToProps = {
   // removeOne: actions.todoRemove
   removeOne: actions.todoDelete,
-  patch: actions.todoPatch
+  update: actions.todoUpdate,
+  fetchAll: actions.todoFetchAll
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

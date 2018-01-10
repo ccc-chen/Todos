@@ -23,6 +23,10 @@ class StoryTodos extends Component
       filter: props.state.filter
     @
 
+  # componentWillMount: ->
+  #   @props.actions.fetchAll()
+  #   @
+
   componentWillReceiveProps: (nextProps) ->
     {
       todos
@@ -78,7 +82,7 @@ class StoryTodos extends Component
         hasClick: (
           (key, todo, isCompleted) ->
             console.log key, todo, isCompleted
-            @props.actions.patch
+            @props.actions.update
               objectId: key
               todo: todo
               isCompleted: !isCompleted
@@ -87,19 +91,21 @@ class StoryTodos extends Component
         Patch: (
           (key, value, isCompleted) ->
             console.log '2', isCompleted
-            @props.actions.patch
+            @props.actions.update
               objectId: key
               todo: value
               isCompleted: isCompleted
         ).bind @
 
 mapStateToProps = (state) ->
+  # console.log state.todosRedux
   getState state.todosRedux
 
 mapActionToProps =
   # removeOne: actions.todoRemove
   removeOne: actions.todoDelete
-  patch: actions.todoPatch
+  update: actions.todoUpdate
+  fetchAll: actions.todoFetchAll
 
 export default connect(
   mapStateToProps
