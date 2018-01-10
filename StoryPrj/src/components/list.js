@@ -74,12 +74,14 @@ StoryTodos = class StoryTodos extends Component {
         }
       }).bind(this),
       Delete: (function(key) {
+        // @props.actions.remove
         return this.props.actions.deleteOne({
           objectId: key
         });
       }).bind(this),
       hasClick: (function(key, todo, isCompleted) {
         return this.props.actions.update({
+          // @props.actions.patch
           objectId: key,
           todo: todo,
           isCompleted: !isCompleted
@@ -87,6 +89,7 @@ StoryTodos = class StoryTodos extends Component {
       }).bind(this),
       Patch: (function(key, value, isCompleted) {
         return this.props.actions.update({
+          // @props.actions.patch            
           objectId: key,
           todo: value,
           isCompleted: isCompleted
@@ -107,4 +110,6 @@ mapActionToProps = {
   fetchAll: actions.todoFetchAll
 };
 
+// remove: actions.todoRemove
+// patch: actions.todoPatch
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

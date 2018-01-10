@@ -75,6 +75,7 @@ class StoryTodos extends Component
 
         Delete: (
           (key) ->
+            # @props.actions.remove
             @props.actions.deleteOne
               objectId: key
         ).bind @
@@ -82,6 +83,7 @@ class StoryTodos extends Component
         hasClick: (
           (key, todo, isCompleted) ->
             @props.actions.update
+            # @props.actions.patch
               objectId: key
               todo: todo
               isCompleted: !isCompleted
@@ -90,6 +92,7 @@ class StoryTodos extends Component
         Patch: (
           (key, value, isCompleted) ->
             @props.actions.update
+            # @props.actions.patch            
               objectId: key
               todo: value
               isCompleted: isCompleted
@@ -102,6 +105,8 @@ mapActionToProps =
   deleteOne: actions.todoDelete
   update: actions.todoUpdate
   fetchAll: actions.todoFetchAll
+  # remove: actions.todoRemove
+  # patch: actions.todoPatch
 
 export default connect(
   mapStateToProps

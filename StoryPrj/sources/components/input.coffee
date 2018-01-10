@@ -48,6 +48,7 @@ class StoryTodos extends Component
       handlers:
         submit: ( ->
           @props.actions.create todo: @state.todo
+          # @props.actions.save todo: @state.todo
           @refs.RefInput.refs.RefInput.clearInput()
         ).bind @
     ,
@@ -70,7 +71,7 @@ mapStateToProps = (state) ->
 mapActionToProps =
   filterSave: actions.filterSave
   create: actions.todoCreate
-  
+  # save: actions.todoSave
 
 export default connect(
   mapStateToProps
