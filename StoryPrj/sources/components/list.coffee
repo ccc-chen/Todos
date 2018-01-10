@@ -86,7 +86,7 @@ class StoryTodos extends Component
 
         Patch: (
           (key, value, isCompleted) ->
-            # console.log '2', isCompleted
+            console.log '2', isCompleted
             @props.actions.patch
               objectId: key
               todo: value
@@ -99,7 +99,6 @@ mapStateToProps = (state) ->
 mapActionToProps =
   removeOne: actions.todoRemove
   patch: actions.todoPatch
-  save: actions.todoUpdate
 
 export default connect(
   mapStateToProps

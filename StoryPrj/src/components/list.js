@@ -82,7 +82,7 @@ StoryTodos = class StoryTodos extends Component {
         });
       }).bind(this),
       Patch: (function(key, value, isCompleted) {
-        // console.log '2', isCompleted
+        console.log('2', isCompleted);
         return this.props.actions.patch({
           objectId: key,
           todo: value,
@@ -100,8 +100,7 @@ mapStateToProps = function(state) {
 
 mapActionToProps = {
   removeOne: actions.todoRemove,
-  patch: actions.todoPatch,
-  save: actions.todoUpdate
+  patch: actions.todoPatch
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

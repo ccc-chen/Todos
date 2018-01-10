@@ -65,7 +65,7 @@ StoryTodos = class StoryTodos extends Component {
       },
       handlers: {
         submit: (function() {
-          this.props.actions.create({
+          this.props.actions.save({
             todo: this.state.todo
           });
           return this.refs.RefInput.refs.RefInput.clearInput();
@@ -96,7 +96,7 @@ mapStateToProps = function(state) {
 
 mapActionToProps = {
   filterSave: actions.filterSave,
-  create: actions.todoSave
+  save: actions.todoSave
 };
 
 export default connect(mapStateToProps, mapActionToProps, StoryTodos);

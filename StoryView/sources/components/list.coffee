@@ -66,12 +66,11 @@ class list extends Component
     DeletePress = (objectId) ->
       Delete objectId
 
-    PatchPress = (objectId, todo) ->
-      Patch objectId, todo   
+    PatchPress = (objectId, todo, isCompleted) ->
+      Patch objectId, todo, isCompleted
 
-      
-    onPressEdit = (objectId, todo) ->
-      console.log objectId, todo
+    onPressEdit = (objectId, todo, isCompleted) ->
+      console.log objectId, todo, isCompleted
       prompt(
         'defaultValue'
         'defaultValue for prompt'
@@ -79,11 +78,12 @@ class list extends Component
             text: 'Cancel'
           ,
             text: 'Submit'
-            onPress: (value) => PatchPress(objectId, value)
+            onPress: (value) => PatchPress(objectId, value, isCompleted)
         ]
         'default'
       todo)
-    
+
+# 删除 
     onPressDelete = (objectId) ->
       console.log '删除的id是:', objectId
       alert(
@@ -111,7 +111,7 @@ class list extends Component
             c_SwipeAction
               right: [
                 text: '编辑'
-                onPress: () -> onPressEdit c.objectId, c.todo
+                onPress: () -> onPressEdit c.objectId, c.todo, c.isCompleted
                 style:
                   background: '#ddd'
                   color: 'white'
