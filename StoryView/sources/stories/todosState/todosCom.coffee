@@ -21,10 +21,9 @@ export default ->
     } = CFX
 
     c_Input
-      filter: 'completed'
-      disable: false      
+      filter: 'completed' 
       selector: (filter) ->
         console.log filter
-      blur: (v) ->
-        console.log v          
+      # blur: (v) ->
+      #   console.log v 
       

@@ -22,9 +22,8 @@ export default ->
 
     c_Input
       filter: 'all'
-      disable: false      
       selector: (filter) ->
         console.log filter
-      blur: (v) ->
-        console.log v          
+      # blur: (v) ->
+      #   console.log v          
       

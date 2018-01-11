@@ -24,5 +24,5 @@ export default ->
       filter: 'active'
       selector: (filter) ->
         console.log filter
-      blur: (v) ->
-        console.log v
+      # blur: (v) ->
+      #   console.log v

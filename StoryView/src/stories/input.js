@@ -24,9 +24,8 @@ export default function() {
       selector: function(filter) {
         return console.log(filter);
       },
-      onBlur: function(v) {
-        return console.log(v);
-      },
+      // onBlur: (v) ->
+      //   console.log v
       focus: function(v) {
         return console.log(v);
       }

@@ -22,21 +22,21 @@ export default ->
 
     c_List
       data: [
-          value: 0
-          label: '完成1'
+          objectId: 0
+          todo: '完成'
+          isCompleted: true
         ,
-          value: 1
-          label: '完成2'
-      ]
-      
-      creatList: (data) ->
-        console.log 'hello'
-        
-      isClick: true
-      str: ' '
-      
+          objectId: 1
+          todo: '未完成'
+          isCompleted: false        
+      ]    
+      styleChange: (
+        (objectId, isCompleted) ->
+          if isCompleted is true
+            textDecorationLine: 'line-through'
+            opacity: 0.4
+        ).bind @
+  
       hasClick: (str) ->
         console.log 'key:'
-        console.log str    
-
-
+        console.log str

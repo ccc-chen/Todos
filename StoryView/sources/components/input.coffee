@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { prefixDom } from 'cfx.dom'
-
+import { HotKeys } from 'react-hotkeys'
 import {
   List
   Icon
@@ -19,9 +19,16 @@ CFX = prefixDom {
   Popover
   InputItem
   List
+  HotKeys
 }
 
-export default ->
+class StoryKeyInput extends Component
+
+  constroutor: (props) ->
+    super props
+    @state =
+      todo: ''
+    @
 
   render: ->
 
@@ -33,6 +40,7 @@ export default ->
       c_Popover
       c_InputItem
       c_List
+      c_HotKeys
     } = CFX
 
     selector =
@@ -48,66 +56,81 @@ export default ->
     selectStyl = (filter, itemValue) ->
       color: 'red' if filter is itemValue
 
-    c_NavBar
-      mode: 'light'
-      rightContent:
-        c_Popover
-          overlayClassName: 'fortest'
-          onSelect: onSelect
-          overlayStyle:
-            color: 'currentColor'
+    c_HotKeys
+      keyMap:
+        submit: 'enter'
+      handlers:
+        submit: ( ->
+          console.log @state.todo
+          @refs.RefInput.clearInput()
+        ).bind @
 
-          overlay: [
-            c_Item
-              key: '1'
-              value: 'active'
-              style: selectStyl @props.filter, 'active'
-            , 'Active'
-            c_Item
-              key: '2'
-              value: 'completed'
-              style: selectStyl @props.filter, 'completed'
-            , 'Completed'
-            c_Item
-              key: '3'
-              value: 'all'
-              style: selectStyl @props.filter, 'all'
-            , 'All'
-          ]
-        ,
-          c_div
-            style:
-              height: '100%'
-              padding: '0 15px'
-              marginRight: '-15px'
-              display: 'flex'
-              alignItems: 'center'
+      c_NavBar
+        mode: 'light'
+        rightContent:
+          c_Popover
+            overlayClassName: 'fortest'
+            onSelect: onSelect
+            overlayStyle:
+              color: 'currentColor'
 
-            c_Icon
-              type: 'ellipsis'
+            overlay: [
+              c_Item
+                key: '1'
+                value: 'active'
+                style: selectStyl @props.filter, 'active'
+              , 'Active'
+              c_Item
+                key: '2'
+                value: 'completed'
+                style: selectStyl @props.filter, 'completed'
+              , 'Completed'
+              c_Item
+                key: '3'
+                value: 'all'
+                style: selectStyl @props.filter, 'all'
+              , 'All'
+            ]
+          ,
+            c_div
+              style:
+                height: '100%'
+                padding: '0 15px'
+                marginRight: '-15px'
+                display: 'flex'
+                alignItems: 'center'
 
-      c_InputItem {
-        ref: 'RefInput'
-        placeholder: 'What needs to be done'
-        (
-          if @props.onBlur
-          then onBlur: @props.onBlur
-          else {}
-        )...
-        (
-          if @props.onFocus
-          then onFocus: @props.onFocus
-          else {}
-        )...
-        (
-          if @props.onChange
-          then onChange: @props.onChange
-          else {}
-        )...
-        (
-          if @props.value
-          then value: @props.value
-          else {}
-        )...
-        clear: true
-      }
+              c_Icon
+                type: 'ellipsis'
+
+        c_InputItem {
+          ref: 'RefInput'
+          placeholder: 'What needs to be done'
+          onChange: (
+            (v) =>
+              @setState todo: v
+          ).bind @
+          (
+            if @props.onBlur
+            then onBlur: @props.onBlur
+            else {}
+          )...
+          (
+            if @props.onFocus
+            then onFocus: @props.onFocus
+            else {}
+          )...
+          (
+            if @props.onChange
+            then onChange: @props.onChange
+            else {}
+          )...
+          (
+            if @props.value
+            then value: @props.value
+            else {}
+          )...
+          clear: true
+        }
+
+export default StoryKeyInput

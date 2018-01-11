@@ -23,10 +23,10 @@ export default function() {
       filter: 'active',
       selector: function(filter) {
         return console.log(filter);
-      },
-      blur: function(v) {
-        return console.log(v);
       }
     });
   });
 };
+
+// blur: (v) ->
+//   console.log v

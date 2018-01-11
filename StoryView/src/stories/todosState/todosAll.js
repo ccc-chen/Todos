@@ -21,13 +21,12 @@ export default function() {
     ({c_Input} = CFX);
     return c_Input({
       filter: 'all',
-      disable: false,
       selector: function(filter) {
         return console.log(filter);
-      },
-      blur: function(v) {
-        return console.log(v);
       }
     });
   });
 };
+
+// blur: (v) ->
+//   console.log v

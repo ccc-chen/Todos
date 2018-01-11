@@ -18,7 +18,6 @@ CFX = prefixDom {
   List
   SwipeAction
   CheckboxItem
-  # prompt
 }
 
 class list extends Component
@@ -59,18 +58,17 @@ class list extends Component
         console.log 'pls run styleChange function!'
         console.log styleChange       
         
-    onChange = (objectId, todo, isCompleted) ->
+    onChange = (objectId, todo, isCompleted) =>
       hasClick objectId, todo, isCompleted
       styleComp objectId, isCompleted
 
-    DeletePress = (objectId) ->
+    DeletePress = (objectId) =>
       Delete objectId
 
-    PatchPress = (objectId, todo, isCompleted) ->
+    PatchPress = (objectId, todo, isCompleted) =>
       Patch objectId, todo, isCompleted
 
-    onPressEdit = (objectId, todo, isCompleted) ->
-      console.log objectId, todo, isCompleted
+    onPressEdit = (objectId, todo, isCompleted) =>
       prompt(
         'defaultValue'
         'defaultValue for prompt'
@@ -84,7 +82,7 @@ class list extends Component
       todo)
 
 # 删除 
-    onPressDelete = (objectId) ->
+    onPressDelete = (objectId) =>
       console.log '删除的id是:', objectId
       alert(
         'Delete'
@@ -111,13 +109,13 @@ class list extends Component
             c_SwipeAction
               right: [
                 text: '编辑'
-                onPress: () -> onPressEdit c.objectId, c.todo, c.isCompleted
+                onPress: () => onPressEdit c.objectId, c.todo, c.isCompleted
                 style:
                   background: '#ddd'
                   color: 'white'
               ,
                 text: '删除'
-                onPress: () -> onPressDelete c.objectId
+                onPress: () => onPressDelete c.objectId
                 style:
                   background: '#F4333C'
                   color: 'white'
@@ -127,7 +125,7 @@ class list extends Component
               objectid: c.objectId
               style:
                 styleComp c.objectId, c.isCompleted
-              onChange: () -> onChange c.objectId, c.todo, c.isCompleted
+              onChange: () => onChange c.objectId, c.todo, c.isCompleted
               checked: c.isCompleted
             , c.todo
           ]

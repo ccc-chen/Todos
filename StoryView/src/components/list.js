@@ -22,7 +22,6 @@ CheckboxItem = Checkbox.CheckboxItem;
 
 CFX = prefixDom({List, SwipeAction, CheckboxItem});
 
-// prompt
 list = class list extends Component {
   render() {
     var Delete, DeletePress, Patch, PatchPress, c_CheckboxItem, c_List, c_SwipeAction, hasClick, onChange, onPressDelete, onPressEdit, styleChange, styleComp;
@@ -43,18 +42,17 @@ list = class list extends Component {
       console.log('pls run styleChange function!');
       return console.log(styleChange);
     };
-    onChange = function(objectId, todo, isCompleted) {
+    onChange = (objectId, todo, isCompleted) => {
       hasClick(objectId, todo, isCompleted);
       return styleComp(objectId, isCompleted);
     };
-    DeletePress = function(objectId) {
+    DeletePress = (objectId) => {
       return Delete(objectId);
     };
-    PatchPress = function(objectId, todo) {
-      return Patch(objectId, todo);
+    PatchPress = (objectId, todo, isCompleted) => {
+      return Patch(objectId, todo, isCompleted);
     };
-    onPressEdit = function(objectId, todo) {
-      console.log(objectId, todo);
+    onPressEdit = (objectId, todo, isCompleted) => {
       return prompt('defaultValue', 'defaultValue for prompt', [
         {
           text: 'Cancel'
@@ -63,12 +61,14 @@ list = class list extends Component {
           text: 'Submit',
           onPress: (value) => {
             return PatchPress(objectId,
-        value);
+        value,
+        isCompleted);
           }
         }
       ], 'default', todo);
     };
-    onPressDelete = function(objectId) {
+    // 删除 
+    onPressDelete = (objectId) => {
       console.log('删除的id是:', objectId);
       return alert('Delete', 'Are you sure???', [
         {
@@ -101,9 +101,10 @@ list = class list extends Component {
             right: [
               {
                 text: '编辑',
-                onPress: function() {
+                onPress: () => {
                   return onPressEdit(c.objectId,
-              c.todo);
+              c.todo,
+              c.isCompleted);
                 },
                 style: {
                   background: '#ddd',
@@ -112,7 +113,7 @@ list = class list extends Component {
               },
               {
                 text: '删除',
-                onPress: function() {
+                onPress: () => {
                   return onPressDelete(c.objectId);
                 },
                 style: {
@@ -123,10 +124,10 @@ list = class list extends Component {
             ]
           },
           c_CheckboxItem({
-            objectId: c.objectId,
+            objectid: c.objectId,
             style: styleComp(c.objectId,
           c.isCompleted),
-            onChange: function() {
+            onChange: () => {
               return onChange(c.objectId,
           c.todo,
           c.isCompleted);

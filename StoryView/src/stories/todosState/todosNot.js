@@ -20,19 +20,24 @@ export default function() {
     return c_ListNot({
       data: [
         {
-          value: 0,
-          label: '完成1'
+          objectId: 0,
+          todo: '完成',
+          isCompleted: true
         },
         {
-          value: 1,
-          label: '完成2'
+          objectId: 1,
+          todo: '未完成',
+          isCompleted: false
         }
       ],
-      creatList: function(data) {
-        return console.log('hello');
-      },
-      isClick: false,
-      str: ' ',
+      styleChange: (function(objectId, isCompleted) {
+        if (isCompleted === true) {
+          return {
+            textDecorationLine: 'line-through',
+            opacity: 0.4
+          };
+        }
+      }).bind(this),
       hasClick: function(str) {
         console.log('key:');
         return console.log(str);
