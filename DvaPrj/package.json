@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "babel-plugin-dva-hmr": "^0.4.0",
+    "babel-plugin-import": "^1.6.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "cfx.simple-build-tool": "^0.0.3",
+    "ddeyes": "^0.0.4",
+    "expect": "^21.2.1",
+    "husky": "^0.14.3",
+    "redbox-react": "^1.5.0",
+    "roadhog": "^2.0.0-beta.1"
+  },
+  "dependencies": {
+    "ReduxServ": "file:../ReduxServ",
+    "StoryView": "file:../StoryView",
+    "antd": "^2.13.10",
+    "cfx.dom": "^0.0.3",
+    "cfx.react-redux": "^0.0.2",
+    "dva": "^2.1.0",
+    "dva-loading": "^1.0.4",
+    "history": "^4.7.2",
+    "query-string": "^5.0.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
