@@ -14,17 +14,14 @@ import {
 } from 'react-hotkeys';
 
 import {
-  WingBlank,
-  WhiteSpace
-} from 'antd-mobile';
-
-import {
   List,
   InputItem,
   Switch,
   Stepper,
   Range,
-  Button
+  Button,
+  WingBlank,
+  WhiteSpace
 } from 'antd-mobile';
 
 ({Item} = List);
@@ -33,44 +30,35 @@ import {
   createForm
 } from 'rc-form';
 
-CFX = prefixDom({'form': 'form', List, Item, InputItem, Button});
+CFX = prefixDom({'div': 'div', 'form': 'form', List, Item, InputItem, Button, WingBlank, WhiteSpace});
 
 export default function() {
   return {
     render: function() {
-      var c_Button, c_InputItem, c_Item, c_List, c_form;
-      ({c_form, c_List, c_Item, c_InputItem, c_Button} = CFX);
-      return c_form({}, c_List({}, c_InputItem({
-        style: {
-          width: '80%',
-          margin: '0 auto'
-        },
-        rules: [
-          {
-            require: true,
-            message: 'Please input account'
-          },
-          {
-            validator: this.validateAccount
-          }
-        ],
+      var c_Button, c_InputItem, c_Item, c_List, c_WhiteSpace, c_WingBlank, c_div, c_form;
+      ({c_div, c_form, c_List, c_Item, c_InputItem, c_Button, c_WingBlank, c_WhiteSpace} = CFX);
+      return c_form({}, c_List({}, c_Item({}, c_InputItem({
         clear: true,
-        placeholder: 'please input account'
-      }, 'Account'), c_InputItem({
-        type: 'password',
-        placeholder: 'please input password'
-      }, 'password'), c_Item, c_Button({
+        placeholder: '请输入用户名'
+      }, '用户名:')), c_WhiteSpace({
+        size: 'lg'
+      }), c_Item({}, c_InputItem({
+        clear: true,
+        placeholder: '请输入密码',
+        type: 'password'
+      }, '密码:')), c_WhiteSpace({
+        size: 'lg'
+      }), c_Item({}, c_Button({
         type: 'primary',
         size: 'small',
         inline: true
-      // onClick: @onSubmit
-      }, 'Submit'), c_Button({
+      }, '登录'), c_Button({
         size: 'small',
         inline: true,
         style: {
           marginLeft: '2.5px'
         }
-      }, 'Reset')));
+      }, '注册'))));
     }
   };
 };
