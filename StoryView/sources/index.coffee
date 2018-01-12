@@ -1,11 +1,9 @@
-import Input from './components/input'
-import List from './components/list'
-import Title from './components/title'
-import todosAction from './stories/todosState/todosActive'
+import Input from './components/Todos/input'
+import List from './components/Todos/list'
+import Title from './components/Todos/title'
 
 export {
   Title
   Input
   List
-  todosAction
 }

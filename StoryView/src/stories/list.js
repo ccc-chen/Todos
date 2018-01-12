@@ -11,7 +11,7 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
-import List from '../components/list';
+import List from '../components/Todos/list';
 
 CFX = prefixDom({List});
 

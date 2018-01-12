@@ -9,7 +9,7 @@ import {
   prefixDom
 } from 'cfx.dom';
 
-import ListHave from '../../components/list';
+import ListHave from '../../components/Todos/list';
 
 CFX = prefixDom({ListHave});
 

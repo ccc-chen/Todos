@@ -1,8 +1,6 @@
 import { storiesOf } from '@storybook/react'
 import { prefixDom } from 'cfx.dom'
-
-
-import ListNot from '../../components/list'
+import ListNot from '../../components/Todos/list'
 
 CFX = prefixDom {
   ListNot

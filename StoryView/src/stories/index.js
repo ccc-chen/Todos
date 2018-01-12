@@ -19,6 +19,8 @@ import todosHave from './todosState/todosHave';
 
 import todosNot from './todosState/todosNot';
 
+import LoginForm from './Login';
+
 Welcome();
 
 Todos();
@@ -36,3 +38,5 @@ todosAll();
 todosHave();
 
 todosNot();
+
+LoginForm();

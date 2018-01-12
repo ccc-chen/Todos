@@ -19,6 +19,8 @@ import todosHave from './todosState/todosHave'
 
 import todosNot from './todosState/todosNot'
 
+import LoginForm from './Login'
+
 Welcome()
 Todos()
 Input()
@@ -28,4 +30,5 @@ todosCom()
 todosAll()
 todosHave()
 todosNot()
+LoginForm()
 

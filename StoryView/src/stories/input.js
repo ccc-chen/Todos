@@ -11,7 +11,7 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
-import Input from '../components/input';
+import Input from '../components/Todos/input';
 
 CFX = prefixDom({Input});
 

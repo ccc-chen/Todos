@@ -11,7 +11,7 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
-import Todos from '../components';
+import Todos from '../components/Todos';
 
 CFX = prefixDom({Todos});
 
