@@ -5,7 +5,7 @@ style =
     width: '400px'
     height: '500px'
     padding: '35px'
-    color: 'red'
+    color: '#EE'
     position: 'absolute'
     left: '50%'
     top: '50%'
@@ -16,7 +16,7 @@ style =
     textAlign: 'center'
     height: '20px'
     font: '20px "microsoft yahei",Helvetica,Tahoma,Arial,"Microsoft jhengHei",sans-serif'
-    color: 'red'
+    color: '#FFFFFF'
     height: '20px'
     lineHeight: '20px'
     padding: '0 0 35px 0'
@@ -28,7 +28,7 @@ style =
     marginBottom: '30px'
     borderRadius: '50px'
     position: 'relative'
-    border: 'red 2px solid !important'
+    border: 'rgba(255,255,255,0.2) 2px solid !important'
 
   u_user:
     width: '25px'

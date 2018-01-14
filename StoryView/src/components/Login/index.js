@@ -12,26 +12,34 @@ import {
 
 import nb from './style';
 
-CFX = prefixDom({'div': 'div', 'form': 'form', 'h3': 'h3', 'span': 'span', 'input': 'input', 'a': 'a'});
+import img from '../../../public/Images/demo-1-bg.jpg';
+
+CFX = prefixDom({'div': 'div', 'form': 'form', 'h3': 'h3', 'span': 'span', 'input': 'input', 'img': 'img', 'a': 'a'});
 
 export default function() {
   return {
     render: function() {
-      var c_a, c_div, c_form, c_h3, c_input, c_span;
-      ({c_div, c_form, c_h3, c_span, c_input, c_a} = CFX);
-      return c_div(_extends({}, nb('logo_box')), c_h3(_extends({}, nb('logo_box_h3')), '欢迎登陆'), c_form({
+      var c_a, c_div, c_form, c_h3, c_img, c_input, c_span;
+      ({c_div, c_form, c_h3, c_span, c_input, c_a, c_img} = CFX);
+      return c_div({}, c_img({
+        src: img
+      }), c_div(_extends({}, nb('logo_box')), c_h3(_extends({}, nb('logo_box_h3')), '欢迎登陆'), c_form({
         action: '#',
         name: 'f',
         method: 'post'
       }, c_div(_extends({}, nb('input_outer')), c_span(_extends({}, nb('u_user'))), c_input(_extends({
         type: 'text',
-        placeholder: '请输入账户'
+        placeholder: '请输入账户',
+        style: {
+          color: '#FFFFFF'
+        }
       }, nb('text')))), c_div(_extends({}, nb('input_outer')), c_span(_extends({}, nb('us_uer'))), c_input(_extends({
         type: 'password',
         placeholder: '请输入密码',
         style: {
           position: 'absolute',
           zIndex: '100',
+          color: '#FFFFFF',
           value: ''
         }
       }, nb('text')))), c_div(_extends({}, nb('mb2')), c_a(_extends({
@@ -39,7 +47,7 @@ export default function() {
           color: '#FFFFFF'
         },
         href: '#'
-      }, nb('act_but'), nb('submit')), '登录'))));
+      }, nb('act_but'), nb('submit')), '登录')))));
     }
   };
 };

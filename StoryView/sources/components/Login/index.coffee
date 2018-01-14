@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { prefixDom } from 'cfx.dom'
 import nb from './style'
+import img from '../../../public/Images/demo-1-bg.jpg'
 
 CFX = prefixDom {
   'div'
@@ -8,6 +9,7 @@ CFX = prefixDom {
   'h3'
   'span'
   'input'
+  'img'
   'a'
 }
 
@@ -21,59 +23,68 @@ export default ->
       c_span
       c_input
       c_a
+      c_img
     } = CFX
-
-    c_div {
-      ( nb 'logo_box' )...
-    }
+    
+    c_div {}
     ,
-      c_h3 {
-        ( nb 'logo_box_h3' )...
+      c_img
+        src: img
+
+      c_div {
+        ( nb 'logo_box' )...
       }
-      , '欢迎登陆'
-      c_form
-        action: '#'
-        name: 'f'
-        method: 'post'
-      ,  
-        c_div {
-          ( nb 'input_outer' )...
+      ,
+        c_h3 {
+          ( nb 'logo_box_h3' )...
         }
-        ,
-          c_span {
-            ( nb 'u_user' )...
+        , '欢迎登陆'
+        c_form
+          action: '#'
+          name: 'f'
+          method: 'post'
+        ,  
+          c_div {
+            ( nb 'input_outer' )...
           }
-          c_input {
-            type: 'text'
-            placeholder: '请输入账户'            
-            ( nb 'text' )...
+          ,
+            c_span {
+              ( nb 'u_user' )...
+            }
+            c_input {
+              type: 'text'
+              placeholder: '请输入账户'
+              style:
+                color: '#FFFFFF'
+              ( nb 'text' )...
+            }
+          c_div {
+            ( nb 'input_outer' )...
           }
-        c_div {
-          ( nb 'input_outer' )...
-        }
-        ,
-          c_span {
-            ( nb 'us_uer' )...
+          ,
+            c_span {
+              ( nb 'us_uer' )...
+            }
+            c_input {
+              type: 'password'
+              placeholder: '请输入密码'
+              style:
+                position: 'absolute'
+                zIndex: '100'
+                color: '#FFFFFF'                
+                value: ''
+              ( nb 'text' )...
+            }
+          c_div {
+            ( nb 'mb2' )...
           }
-          c_input {
-            type: 'password'
-            placeholder: '请输入密码'
-            style:
-              position: 'absolute'
-              zIndex: '100'
-              value: ''    
-            ( nb 'text' )...
-          }
-        c_div {
-          ( nb 'mb2' )...
-        }
-        ,
-          c_a {
-            style:
-              color: '#FFFFFF'
-            href: '#'
-            ( nb 'act_but' )...
-            ( nb 'submit' )...
-          }
-          , '登录'
+          ,
+            c_a {
+              style:
+                color: '#FFFFFF'
+              href: '#'
+              ( nb 'act_but' )...
+              ( nb 'submit' )...
+            }
+            , '登录'
 
