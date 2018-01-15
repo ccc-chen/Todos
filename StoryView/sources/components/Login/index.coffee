@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { prefixDom } from 'cfx.dom'
 import nb from './style'
-import img from '../../../public/Images/demo-1-bg.jpg'
+import star from '../../../public/assets/demo-1-bg.jpg'
 
 CFX = prefixDom {
   'div'
@@ -13,7 +13,8 @@ CFX = prefixDom {
   'a'
 }
 
-export default ->
+class Login extends Component
+
   render: ->
 
     {
@@ -25,11 +26,11 @@ export default ->
       c_a
       c_img
     } = CFX
-    
+
     c_div {}
     ,
       c_img
-        src: img
+        src: star
 
       c_div {
         ( nb 'logo_box' )...
@@ -52,6 +53,7 @@ export default ->
               ( nb 'u_user' )...
             }
             c_input {
+              ref: 'userinput'
               type: 'text'
               placeholder: '请输入账户'
               style:
@@ -88,3 +90,4 @@ export default ->
             }
             , '登录'
 
+export default Login

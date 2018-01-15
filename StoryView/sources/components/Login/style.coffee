@@ -33,8 +33,8 @@ style =
   u_user:
     width: '25px'
     height: '25px'
-    background: 'url(../Images/login_ico.png)'
-    backgroundPosition:  '-125px 0'
+    backgroundImage: 'url(../assets/login_ico.png)'
+    backgroundPosition: '-125px 0'
     position: 'absolute'
     margin: '10px 13px'
 
@@ -52,7 +52,7 @@ style =
   us_uer:
     width: '25px'
     height: '25px'
-    backgroundImage: 'url(../Images/login_ico.png)'
+    backgroundImage: 'url(../assets/login_ico.png)'
     backgroundPosition: '-125px -34px'
     position: 'absolute'
     margin: '10px 13px'
