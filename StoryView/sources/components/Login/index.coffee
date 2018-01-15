@@ -53,7 +53,6 @@ class Login extends Component
               ( nb 'u_user' )...
             }
             c_input {
-              ref: 'userinput'
               type: 'text'
               placeholder: '请输入账户'
               style:
