@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/react'
 import { prefixDom } from 'cfx.dom'
 import 'antd-mobile/dist/antd-mobile.css'
-import List from '../components/list'
-import Input from '../components/input'
+import List from '../components/Todos/list'
+import Input from '../components/Todos/input'
+import { Title } from 'StoryView'
 import { Provider } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
 todosStore = store.store
@@ -11,6 +12,7 @@ todosStore = store.store
 
 CFX = prefixDom {
   'div'
+  Title
   Input
   List
   Provider
@@ -51,11 +53,13 @@ export default ->
 
     {
       c_div
+      c_Title
       c_Input
       c_List
     } = CFX
 
     c_div {}
     ,
+      c_Title {}
       c_Input {}
       c_List {}

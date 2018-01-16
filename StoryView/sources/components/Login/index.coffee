@@ -23,8 +23,8 @@ class Login extends Component
       c_h3
       c_span
       c_input
+      c_img      
       c_a
-      c_img
     } = CFX
 
     c_div {}

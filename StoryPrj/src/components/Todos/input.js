@@ -14,7 +14,8 @@ import {
 } from 'react-hotkeys';
 
 import {
-  Input
+  Input,
+  Login
 } from 'StoryView';
 
 import {
@@ -57,7 +58,6 @@ StoryTodos = class StoryTodos extends Component {
   render() {
     var c_HotKeys, c_Input;
     ({c_Input, c_HotKeys} = CFX);
-    console.log(this.refs, '12312312');
     return c_HotKeys({
       keyMap: {
         submit: 'enter'

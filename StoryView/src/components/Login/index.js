@@ -17,17 +17,9 @@ import star from '../../../public/assets/demo-1-bg.jpg';
 CFX = prefixDom({'div': 'div', 'form': 'form', 'h3': 'h3', 'span': 'span', 'input': 'input', 'img': 'img', 'a': 'a'});
 
 Login = class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: ''
-    };
-    this;
-  }
-
   render() {
     var c_a, c_div, c_form, c_h3, c_img, c_input, c_span;
-    ({c_div, c_form, c_h3, c_span, c_input, c_a, c_img} = CFX);
+    ({c_div, c_form, c_h3, c_span, c_input, c_img, c_a} = CFX);
     return c_div({}, c_img({
       src: star
     }), c_div(_extends({}, nb('logo_box')), c_h3(_extends({}, nb('logo_box_h3')), '欢迎登陆'), c_form({
@@ -35,7 +27,6 @@ Login = class Login extends Component {
       name: 'f',
       method: 'post'
     }, c_div(_extends({}, nb('input_outer')), c_span(_extends({}, nb('u_user'))), c_input(_extends({
-      ref: 'UserInput',
       type: 'text',
       placeholder: '请输入账户',
       style: {

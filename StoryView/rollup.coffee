@@ -1,4 +1,5 @@
 import alias from 'rollup-plugin-alias'
+import dd from 'ddeyes'
 import {
   coffee2
   coffeepath
@@ -14,19 +15,22 @@ export default
     format: 'cjs'
 
   plugins: [
-    coffee2
-      bare: true
-      sourceMap: true
-    coffeepath()
-    cleanup()
-
+    
+    alias
+      resolve: [
+        '.coffee'
+        '.js'
+      ]
+      src: './sources/index'
+    
     replace
       patterns: [
         transform: (code, id) ->
           pattern = /\.\.\/\.\.\/\.\.\/public\/assets\/demo-1-bg\.jpg/
           if pattern.test code
             code = code.replace pattern, '../../assets/demo-1-bg.jpg'
-          code         
+            dd code
+          code
       ]
     replace
       patterns: [
@@ -34,7 +38,14 @@ export default
           pattern = /\.\.\/\.\.\/\.\.\/public\/assets\/login_ico\.png/
           if pattern.test code
             code = code.replace pattern, '../../assets/login_ico.png'
-          code         
+            dd code
+          code
       ]
-    image()  
+    coffee2
+      bare: true
+      sourceMap: true
+    coffeepath()
+    image()
+    cleanup()
+
   ]

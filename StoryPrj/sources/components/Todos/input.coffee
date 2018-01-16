@@ -1,7 +1,10 @@
 import { ddbs as dd } from 'ddeyes'
 import React, { Component } from 'react'
 import { HotKeys } from 'react-hotkeys'
-import { Input } from 'StoryView'
+import {
+  Input
+  Login
+} from 'StoryView'
 import { prefixDom } from 'cfx.dom'
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'

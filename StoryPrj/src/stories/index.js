@@ -5,6 +5,10 @@ import Welcome from './Welcome';
 
 import App from './App';
 
+import Login from './Login';
+
 Welcome();
 
 App();
+
+Login();
