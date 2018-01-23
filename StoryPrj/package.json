@@ -25,7 +25,7 @@
     "ReduxServ": "file:../ReduxServ",
     "StoryView": "file:../StoryView",
     "cfx.dom": "^0.0.3",
-    "cfx.react-redux": "^0.0.2",
+    "cfx.react-redux": "0.0.2",
     "cfx.redux": "^0.0.5",
     "cfx.redux-actions": "^0.0.1",
     "cfx.redux-saga": "^0.0.1",

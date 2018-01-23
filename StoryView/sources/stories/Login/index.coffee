@@ -1,22 +1,22 @@
 import { storiesOf } from '@storybook/react'
 import { prefixDom } from 'cfx.dom'
 import 'antd-mobile/dist/antd-mobile.css'
-import LoginForm from '../../components/Login/index'
+import Login from '../../components/Login'
 
 CFX = prefixDom {
-  LoginForm
+  Login
 }
 
 export default ->
 
-  storiesOf 'LoginForm', module
+  storiesOf 'Login', module
 
   .add 'Index'
 
   , =>
 
     {
-      c_LoginForm
+      c_Login
     } = CFX
 
-    c_LoginForm {}
+    c_Login {}

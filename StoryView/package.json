@@ -39,6 +39,8 @@
     "react-hotkeys": "0.10.0",
     "rc-form": "2.1.7",
     "rollup-plugin-image": "1.0.2",
-    "rollup-plugin-re": "1.0.6"
+    "rollup-plugin-re": "1.0.6",
+    "react-particles-js": "2.1.0",
+    "cfx.antd-wrapper": "git+https://github.com/react-cfx/cfx.antd-wrapper"
   }
 }

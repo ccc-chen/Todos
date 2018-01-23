@@ -11,14 +11,14 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
-import LoginForm from '../../components/Login/index';
+import Login from '../../components/Login';
 
-CFX = prefixDom({LoginForm});
+CFX = prefixDom({Login});
 
 export default function() {
-  return storiesOf('LoginForm', module).add('Index', () => {
-    var c_LoginForm;
-    ({c_LoginForm} = CFX);
-    return c_LoginForm({});
+  return storiesOf('Login', module).add('Index', () => {
+    var c_Login;
+    ({c_Login} = CFX);
+    return c_Login({});
   });
 };

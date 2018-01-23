@@ -1,5 +1,6 @@
 # import 'normalize.css/normalize.css'
 # import 'reset-css/reset.css'
+import 'antd/dist/antd.css'
 
 import Welcome from './Welcome'
 
@@ -19,7 +20,7 @@ import todosHave from './todosState/todosHave'
 
 import todosNot from './todosState/todosNot'
 
-import LoginForm from './Login'
+import Login from './Login'
 
 Welcome()
 Todos()
@@ -30,5 +31,5 @@ todosCom()
 todosAll()
 todosHave()
 todosNot()
-LoginForm()
+Login()
 
