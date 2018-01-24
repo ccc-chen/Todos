@@ -11,6 +11,8 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
+import 'antd/dist/antd.css';
+
 import List from '../components/Todos/list';
 
 import Input from '../components/Todos/input';

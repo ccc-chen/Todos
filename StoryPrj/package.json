@@ -4,6 +4,7 @@
   "main": "./dist/bundle.js",
   "devDependencies": {
     "antd-mobile": "2.1.1",
+    "antd": "^3.1.4",
     "cfx.react-redux": "0.0.2",
     "cfx.require": "^0.0.1",
     "cfx.require-plugin-coffee": "^0.0.4",
@@ -36,6 +37,7 @@
     "react-dom": "^16.2.0",
     "react-hotkeys": "^0.10.0",
     "react-redux": "5.0.6",
-    "reset-css": "^2.2.1"
+    "reset-css": "^2.2.1",
+    "cfx.antd-wrapper": "git+https://github.com/react-cfx/cfx.antd-wrapper"
   }
 }

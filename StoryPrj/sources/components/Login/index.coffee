@@ -7,12 +7,18 @@ CFX = prefixDom {
   Login
 }
 
-export default ->
+class StoryTodos extends Component
+
+  constructor: (props) ->
+    super props
+    @
 
   render: ->
 
     {
       c_Login
     } = CFX
-
+    console.log @props
     c_Login {}
+
+export default StoryTodos  
