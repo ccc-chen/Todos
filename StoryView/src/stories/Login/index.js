@@ -11,7 +11,7 @@ import {
 
 import 'antd-mobile/dist/antd-mobile.css';
 
-import Login from '../../components/Login';
+import Login from '../../components/Login/Form';
 
 CFX = prefixDom({Login});
 

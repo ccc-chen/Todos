@@ -30,13 +30,12 @@ Commit = ({
   ,
     c_Button {
       type: 'primary'
-      htmlType: 'submit'
+      htmlType: 'submit'    
       ( nb 'loginFormButton' )...
-    }
+    }     
     , '登录'
-
     decorator: decorator
-    name: 'remember'
+    name: 'remember'  
     props:
       valuePropName: 'checked'
       initialValue: true

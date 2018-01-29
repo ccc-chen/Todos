@@ -1,15 +1,17 @@
 import { prefixDom } from 'cfx.dom'
-import React,{ Component } from 'react'
-import { Login } from 'cfx.antd-wrapper'
 
-CFX = prefixDom {
-  Login
+import LoginForm from './Form'
+import LoginCard from './Card'
+import CenterCard from './CenterCard'
+import WithBackImg from './WithBackImg'
+import WithBackCanvas from './WithBackCanvas'
+
+export {
+  LoginForm
+  LoginCard
+  CenterCard
+  WithBackImg
+  WithBackCanvas
 }
 
-export default =>
-
-  {
-    c_Login
-  } = CFX
-
-  c_Login {}
+export default WithBackCanvas

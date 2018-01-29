@@ -5,7 +5,7 @@ import List from './components/Todos/list';
 
 import Title from './components/Todos/title';
 
-import Login from './components/Login/index';
+import Login from './components/Login';
 
 export {
   Title,
