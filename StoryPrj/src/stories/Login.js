@@ -11,6 +11,8 @@ import {
 
 import Login from '../components/Login';
 
+import 'antd/dist/antd.css';
+
 CFX = prefixDom({'div': 'div', Login});
 
 export default function() {
