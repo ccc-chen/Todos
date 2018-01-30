@@ -1,24 +1,17 @@
-import { ddbs as dd } from 'ddeyes'
-import React, { Component } from 'react'
-import { Login } from 'StoryView'
-import { prefixDom } from 'cfx.dom'
+# import { prefixDom } from 'cfx.dom'
 
-CFX = prefixDom {
-  Login
-}
+# import LoginForm from './Form'
+# # import LoginCard from './Card'
+# # import CenterCard from './CenterCard'
+# # import WithBackImg from './WithBackImg'
+# # import WithBackCanvas from './WithBackCanvas'
 
-class StoryTodos extends Component
+# export {
+#   LoginForm
+#   # LoginCard
+#   # CenterCard
+#   # WithBackImg
+#   # WithBackCanvas
+# }
 
-  constructor: (props) ->
-    super props
-    @
-
-  render: ->
-
-    {
-      c_Login
-    } = CFX
-    console.log @props
-    c_Login {}
-
-export default StoryTodos  
+# export default WithBackCanvas

@@ -8,11 +8,7 @@ import {
 import { prefixDom } from 'cfx.dom'
 import { connect } from 'cfx.react-redux'
 import { store } from 'ReduxServ'
-{
-  actions
-  reducers
-  sagas
-} = store
+{ actions } = store
 import { getState } from './components'
 
 CFX = prefixDom {

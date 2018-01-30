@@ -9,7 +9,7 @@ import {
   prefixDom
 } from 'cfx.dom';
 
-import Login from '../components/Login';
+import Login from '../components/Login/Form';
 
 import 'antd/dist/antd.css';
 
